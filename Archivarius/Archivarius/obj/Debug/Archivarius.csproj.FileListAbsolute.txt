@@ -34,3 +34,9 @@ C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Arch
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\MahApps.Metro.pdb
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\MahApps.Metro.xml
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\MaterialDesignThemes.MahApps.pdb
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Archivarius_Content.g.cs
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\EntityFramework.dll
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\EntityFramework.xml
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\ru\EntityFramework.resources.dll
