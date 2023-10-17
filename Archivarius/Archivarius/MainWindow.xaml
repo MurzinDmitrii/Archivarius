@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Archivarius"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
-    </Grid>
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        Title="Arhivarius" Height="450" Width="800">
+    <Viewbox>
+        <Grid>
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Viewbox>
+    <Window.Resources>
+        <System:Int32 x:Key="ButtonHeight">30</System:Int32>
+    </Window.Resources>
 </Window>
