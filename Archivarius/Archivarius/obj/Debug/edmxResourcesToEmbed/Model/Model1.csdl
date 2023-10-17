@@ -97,6 +97,8 @@
     <Property Name="Patronimyc" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Case" Relationship="Self.FK__Case__WorkerID__46E78A0C" FromRole="Worker" ToRole="Case" />
     <NavigationProperty Name="Post" Relationship="Self.FK__Worker__PostID__4BAC3F29" FromRole="Worker" ToRole="Post" />
+    <NavigationProperty Name="EnterData" Relationship="ArhivariusModel.FK__EnterData__ID__5FB337D6" FromRole="Worker" ToRole="EnterData" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK__Act__4AB81AF0">
     <End Role="Case" Type="Self.Case" Multiplicity="1" />
@@ -248,5 +250,30 @@
       <End Role="Post" EntitySet="Post" />
       <End Role="Worker" EntitySet="Worker" />
     </AssociationSet>
+    <EntitySet Name="EnterData" EntityType="ArhivariusModel.EnterData" />
+    <AssociationSet Name="FK__EnterData__ID__5FB337D6" Association="ArhivariusModel.FK__EnterData__ID__5FB337D6">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="EnterData" EntitySet="EnterData" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="EnterData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Worker" Relationship="ArhivariusModel.FK__EnterData__ID__5FB337D6" FromRole="EnterData" ToRole="Worker" />
+  </EntityType>
+  <Association Name="FK__EnterData__ID__5FB337D6">
+    <End Type="ArhivariusModel.Worker" Role="Worker" Multiplicity="1" />
+    <End Type="ArhivariusModel.EnterData" Role="EnterData" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EnterData">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -1,4 +1,4 @@
-﻿using Archivarius.Pages;
+﻿using Archivarius.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Archivarius
+namespace Archivarius.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AllActPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AllActPage : Page
     {
-        public MainWindow()
+        public AllActPage(Worker worker)
         {
             InitializeComponent();
-            AfterAuthPanel.DataContext = Properties.Settings.Default;
-            HelloBox.DataContext = Properties.Settings.Default;
-            MainFrame.Navigate(new AuthPage());
+            Properties.Settings.Default.FullName = "Здравствуйте, " + worker.Name + " " + 
+                (worker.Patronimyc ?? "") + "!";
         }
     }
 }

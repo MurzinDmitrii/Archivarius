@@ -48,6 +48,13 @@
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
   </EntityType>
+  <EntityType Name="EnterData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="Post">
     <Key>
       <PropertyRef Name="ID" />
@@ -81,6 +88,7 @@
     <Property Name="FirstName" Type="nvarchar" MaxLength="60" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="60" Nullable="false" />
     <Property Name="Patronimyc" Type="nvarchar" MaxLength="60" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK__Act__4AB81AF0">
     <End Role="Case" Type="Self.Case" Multiplicity="1" />
@@ -162,6 +170,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__EnterData__ID__5FB337D6">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+    <End Role="EnterData" Type="Self.EnterData" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EnterData">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Query__59FA5E80">
     <End Role="Case" Type="Self.Case" Multiplicity="1" />
     <End Role="Query" Type="Self.Query" Multiplicity="*" />
@@ -196,6 +216,7 @@
     <EntitySet Name="ArticleCase" EntityType="Self.ArticleCase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnterData" EntityType="Self.EnterData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Query" EntityType="Self.Query" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
@@ -223,6 +244,10 @@
     <AssociationSet Name="FK__Case__WorkerID__46E78A0C" Association="Self.FK__Case__WorkerID__46E78A0C">
       <End Role="Worker" EntitySet="Worker" />
       <End Role="Case" EntitySet="Case" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EnterData__ID__5FB337D6" Association="Self.FK__EnterData__ID__5FB337D6">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="EnterData" EntitySet="EnterData" />
     </AssociationSet>
     <AssociationSet Name="FK__Query__59FA5E80" Association="Self.FK__Query__59FA5E80">
       <End Role="Case" EntitySet="Case" />

@@ -81,11 +81,20 @@
     <EntitySetMapping Name="Worker">
       <EntityTypeMapping TypeName="ArhivariusModel.Worker">
         <MappingFragment StoreEntitySet="Worker">
+          <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PostID" ColumnName="PostID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Patronimyc" ColumnName="Patronimyc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnterData">
+      <EntityTypeMapping TypeName="ArhivariusModel.EnterData">
+        <MappingFragment StoreEntitySet="EnterData">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -16,7 +16,7 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Авторизация" FontSize="32"/>
             <TextBox
-                x:Name="NameTextBox"
+                x:Name="LoginBox"
                 Width="150"
                 Margin="20,20,20,0"
                 MaxLength="50"
@@ -37,7 +37,8 @@
                 Width="100"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                ToolTip="Нажмите для авторизации">
+                ToolTip="Нажмите для авторизации"
+                Click="AuthButton_Click">
                 <TextBlock Text="Войти" />
             </Button>
         </StackPanel>

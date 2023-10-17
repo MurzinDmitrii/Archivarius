@@ -14,8 +14,9 @@
     <Viewbox>
         <Grid>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <StackPanel x:Name="AfterAuthPanel" Orientation="Vertical" Width="200" Visibility="Collapsed">
-                    <TextBlock Text="Binding" Margin="50,5,5,100"/>
+                <StackPanel x:Name="AfterAuthPanel" Orientation="Vertical" Width="200" 
+                            Visibility="{Binding AfterAuthPanelVisible}">
+                    <TextBlock x:Name="HelloBox" Text="{Binding FullName}" Margin="10,5,5,100"/>
                     <Button
                         x:Name="AllActButton"
                         Margin="5"
@@ -53,7 +54,7 @@
                         <TextBlock Text="Заявки" />
                     </Button>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Width="600" Background="#E8F1F5">
+                <StackPanel Orientation="Vertical" Width="600" Height="350">
                     <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
                 </StackPanel>
             </StackPanel>

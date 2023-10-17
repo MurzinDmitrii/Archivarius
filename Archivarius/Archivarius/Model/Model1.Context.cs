@@ -34,5 +34,6 @@ namespace Archivarius.Model
         public virtual DbSet<Query> Query { get; set; }
         public virtual DbSet<Type> Type { get; set; }
         public virtual DbSet<Worker> Worker { get; set; }
+        public virtual DbSet<EnterData> EnterData { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ArhivariusModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище ArhivariusModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Act">
           <Key>
             <PropertyRef Name="ID" />
@@ -53,6 +53,13 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <EntityType Name="EnterData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="ID" />
@@ -86,6 +93,7 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="60" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="60" Nullable="false" />
           <Property Name="Patronimyc" Type="nvarchar" MaxLength="60" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__Act__4AB81AF0">
           <End Role="Case" Type="Self.Case" Multiplicity="1" />
@@ -167,6 +175,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__EnterData__ID__5FB337D6">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="EnterData" Type="Self.EnterData" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnterData">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Query__59FA5E80">
           <End Role="Case" Type="Self.Case" Multiplicity="1" />
           <End Role="Query" Type="Self.Query" Multiplicity="*" />
@@ -201,6 +221,7 @@
           <EntitySet Name="ArticleCase" EntityType="Self.ArticleCase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnterData" EntityType="Self.EnterData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Query" EntityType="Self.Query" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
@@ -229,6 +250,10 @@
             <End Role="Worker" EntitySet="Worker" />
             <End Role="Case" EntitySet="Case" />
           </AssociationSet>
+          <AssociationSet Name="FK__EnterData__ID__5FB337D6" Association="Self.FK__EnterData__ID__5FB337D6">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="EnterData" EntitySet="EnterData" />
+          </AssociationSet>
           <AssociationSet Name="FK__Query__59FA5E80" Association="Self.FK__Query__59FA5E80">
             <End Role="Case" EntitySet="Case" />
             <End Role="Query" EntitySet="Query" />
@@ -238,8 +263,7 @@
             <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ArhivariusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -340,6 +364,8 @@
           <Property Name="Patronimyc" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Case" Relationship="Self.FK__Case__WorkerID__46E78A0C" FromRole="Worker" ToRole="Case" />
           <NavigationProperty Name="Post" Relationship="Self.FK__Worker__PostID__4BAC3F29" FromRole="Worker" ToRole="Post" />
+          <NavigationProperty Name="EnterData" Relationship="ArhivariusModel.FK__EnterData__ID__5FB337D6" FromRole="Worker" ToRole="EnterData" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__Act__4AB81AF0">
           <End Role="Case" Type="Self.Case" Multiplicity="1" />
@@ -491,7 +517,32 @@
             <End Role="Post" EntitySet="Post" />
             <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
+          <EntitySet Name="EnterData" EntityType="ArhivariusModel.EnterData" />
+          <AssociationSet Name="FK__EnterData__ID__5FB337D6" Association="ArhivariusModel.FK__EnterData__ID__5FB337D6">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="EnterData" EntitySet="EnterData" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="EnterData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Worker" Relationship="ArhivariusModel.FK__EnterData__ID__5FB337D6" FromRole="EnterData" ToRole="Worker" />
+        </EntityType>
+        <Association Name="FK__EnterData__ID__5FB337D6">
+          <End Type="ArhivariusModel.Worker" Role="Worker" Multiplicity="1" />
+          <End Type="ArhivariusModel.EnterData" Role="EnterData" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnterData">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -578,11 +629,20 @@
           <EntitySetMapping Name="Worker">
             <EntityTypeMapping TypeName="ArhivariusModel.Worker">
               <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PostID" ColumnName="PostID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Patronimyc" ColumnName="Patronimyc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnterData">
+            <EntityTypeMapping TypeName="ArhivariusModel.EnterData">
+              <MappingFragment StoreEntitySet="EnterData">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

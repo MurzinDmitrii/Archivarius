@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Archivarius.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,31 @@ namespace Archivarius.Pages
         public AuthPage()
         {
             InitializeComponent();
+        }
+
+        private void AuthButton_Click(object sender, RoutedEventArgs e)
+        {
+            Worker worker = DB.entities.Worker.FirstOrDefault(c => c.Login == LoginBox.Text);
+            if (worker != null)
+            {
+                if (Cryptography.Cryptography.VerifyHashedPassword
+                   (worker.EnterData.Password.ToString(), PasswordBox.Password))
+                {
+                    Properties.Settings.Default.AfterAuthPanelVisible = "Visible";
+                    NavigationService.Navigate(new AllActPage(worker));
+                }
+                else
+                {
+                    MessageBox.Show("Вам отказано в доступе! Неверный пароль!", "Ошибка!",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Вам отказано в доступе! Неверный логин!","Ошибка!",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
