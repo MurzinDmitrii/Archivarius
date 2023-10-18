@@ -42,5 +42,5 @@ C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Arch
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\Cryptography.dll
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\Cryptography.pdb
-C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AllActPage.g.cs
-C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AllActPage.baml
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AllCasePage.g.cs
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AllCasePage.baml

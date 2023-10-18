@@ -23,16 +23,18 @@
                 materialDesign:HintAssist.Hint="Логин" CaretBrush="Black" SelectionBrush="#FFABCDEF"/>
             <PasswordBox
                 x:Name="PasswordBox"
+                MaxLength="30"
                 Width="150"
                 Margin="20"
                 materialDesign:HintAssist.Hint="Пароль" 
                 CaretBrush="#FF005691" SelectionBrush="#FFABCDEF"
-                materialDesign:TextFieldAssist.HasClearButton="True"
+                materialDesign:TextFieldAssist.HasClearButton="False"
+                Style="{StaticResource MaterialDesignRevealPasswordBox}" 
                 />
             <Button
                 x:Name="AuthButton"
                 Height="{StaticResource ButtonHeight}"
-                materialDesign:ButtonAssist.CornerRadius="25"
+                materialDesign:ButtonAssist.CornerRadius="20"
                 Background="#005691"
                 Width="100"
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"

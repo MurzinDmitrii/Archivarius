@@ -18,10 +18,10 @@
                             Visibility="{Binding AfterAuthPanelVisible}">
                     <TextBlock x:Name="HelloBox" Text="{Binding FullName}" Margin="10,5,5,100"/>
                     <Button
-                        x:Name="AllActButton"
+                        x:Name="AllCaseButton"
                         Margin="5"
                         Height="{StaticResource ButtonHeight}"
-                        materialDesign:ButtonAssist.CornerRadius="25"
+                        materialDesign:ButtonAssist.CornerRadius="15"
                         Background="#005691"
                         Width="100"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -33,7 +33,7 @@
                         x:Name="AddButton"
                         Margin="5"
                         Height="{StaticResource ButtonHeight}"
-                        materialDesign:ButtonAssist.CornerRadius="25"
+                        materialDesign:ButtonAssist.CornerRadius="15"
                         Background="#005691"
                         Width="100"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -45,7 +45,7 @@
                         x:Name="QueryButton"
                         Margin="5"
                         Height="{StaticResource ButtonHeight}"
-                        materialDesign:ButtonAssist.CornerRadius="25"
+                        materialDesign:ButtonAssist.CornerRadius="15"
                         Background="#005691"
                         Width="100"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
