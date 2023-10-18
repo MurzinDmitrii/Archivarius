@@ -9,6 +9,18 @@
       Title="AllActPage">
 
     <Grid>
-        
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding ActFullNumber}" Margin="5"/>
+                            <TextBlock Text="{Binding Description}" Margin="5"/>
+                            <TextBlock Text="{Binding JudgeFullInfo}" Margin="5"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>
