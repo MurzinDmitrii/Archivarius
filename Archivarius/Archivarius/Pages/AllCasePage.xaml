@@ -9,11 +9,13 @@
       Title="AllCasePage">
 
     <Grid>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <ListView>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Background="#E8F1F5">
+            <ListView x:Name="CaseListView" Width="570" Height="400" 
+                      ScrollViewer.CanContentScroll="False" Margin="5" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
+                        <StackPanel Margin="5" Width="540" Background="White">
                             <TextBlock Text="{Binding ActFullNumber}" Margin="5"/>
                             <TextBlock Text="{Binding Description}" Margin="5"/>
                             <TextBlock Text="{Binding JudgeFullInfo}" Margin="5"/>

@@ -20,7 +20,7 @@
                 Width="150"
                 Margin="20,20,20,0"
                 MaxLength="50"
-                materialDesign:HintAssist.Hint="Логин" CaretBrush="Black" SelectionBrush="#FFABCDEF"/>
+                materialDesign:HintAssist.Hint="Логин"/>
             <PasswordBox
                 x:Name="PasswordBox"
                 MaxLength="30"

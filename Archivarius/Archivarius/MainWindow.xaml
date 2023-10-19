@@ -19,6 +19,7 @@
                     <TextBlock x:Name="HelloBox" Text="{Binding FullName}" Margin="10,5,5,100"/>
                     <Button
                         x:Name="AllCaseButton"
+                        Click="AllCaseButton_Click"
                         Margin="5"
                         Height="{StaticResource ButtonHeight}"
                         materialDesign:ButtonAssist.CornerRadius="15"

@@ -26,6 +26,11 @@ namespace Archivarius.Pages
             InitializeComponent();
             Properties.Settings.Default.FullName = "Здравствуйте, " + worker.Name + " " +
                 (worker.Patronimyc ?? "") + "!";
+            CaseListView.ItemsSource = DB.entities.Case.ToList();
+        }
+        public AllCasePage()
+        {
+            InitializeComponent();
         }
     }
 }
