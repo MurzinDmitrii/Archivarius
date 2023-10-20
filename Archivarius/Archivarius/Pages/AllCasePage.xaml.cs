@@ -31,6 +31,7 @@ namespace Archivarius.Pages
         public AllCasePage()
         {
             InitializeComponent();
+            CaseListView.ItemsSource = DB.entities.Case.ToList();
         }
     }
 }
