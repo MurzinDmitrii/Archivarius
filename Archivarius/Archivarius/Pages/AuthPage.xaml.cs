@@ -35,7 +35,7 @@ namespace Archivarius.Pages
                    (worker.EnterData.Password.ToString(), PasswordBox.Password))
                 {
                     Properties.Settings.Default.AfterAuthPanelVisible = "Visible";
-                    NavigationService.Navigate(new AllActPage(worker));
+                    NavigationService.Navigate(new AllCasePage(worker));
                 }
                 else
                 {

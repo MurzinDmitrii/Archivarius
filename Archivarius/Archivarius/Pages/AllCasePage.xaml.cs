@@ -17,15 +17,21 @@ using System.Windows.Shapes;
 namespace Archivarius.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AllActPage.xaml
+    /// Логика взаимодействия для AllCasePage.xaml
     /// </summary>
-    public partial class AllActPage : Page
+    public partial class AllCasePage : Page
     {
-        public AllActPage(Worker worker)
+        public AllCasePage(Worker worker)
         {
             InitializeComponent();
-            Properties.Settings.Default.FullName = "Здравствуйте, " + worker.Name + " " + 
+            Properties.Settings.Default.FullName = "Здравствуйте, " + worker.Name + " " +
                 (worker.Patronimyc ?? "") + "!";
+            CaseListView.ItemsSource = DB.entities.Case.ToList();
+        }
+        public AllCasePage()
+        {
+            InitializeComponent();
+            CaseListView.ItemsSource = DB.entities.Case.ToList();
         }
     }
 }
