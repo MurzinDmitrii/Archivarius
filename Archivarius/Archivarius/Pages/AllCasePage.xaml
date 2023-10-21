@@ -39,6 +39,13 @@
                                 <TextBlock Text="{Binding ActFullNumber}" Margin="5"/>
                                 <TextBlock Text="{Binding Description}" Margin="5"/>
                                 <TextBlock Text="{Binding JudgeFullInfo}" Margin="5"/>
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem>Редактировать информацию</MenuItem>
+                                        <MenuItem>Удалить</MenuItem>
+                                        <MenuItem Click="MenuItem_Click">Печать акта о приеме</MenuItem>
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

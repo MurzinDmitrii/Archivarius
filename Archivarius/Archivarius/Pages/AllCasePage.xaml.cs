@@ -33,5 +33,11 @@ namespace Archivarius.Pages
             InitializeComponent();
             CaseListView.ItemsSource = DB.entities.Case.ToList();
         }
+
+        //Печать акта о приеме
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
