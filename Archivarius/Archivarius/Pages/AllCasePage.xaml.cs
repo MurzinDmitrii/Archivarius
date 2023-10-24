@@ -37,7 +37,9 @@ namespace Archivarius.Pages
         //Печать акта о приеме
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuItem menu = sender as MenuItem;
+            Case selectedItem = menu.DataContext as Case;
+            Classes.Print.PrintInnerDocument.Print(selectedItem);
         }
     }
 }

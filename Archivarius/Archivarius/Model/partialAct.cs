@@ -9,11 +9,11 @@ namespace Archivarius.Model
 {
     partial class Case
     {
-        public string ActFullNumber
+        public string CaseFullNumber
         {
             get
             {
-                return "Дело №" + CategoryID + "-" + Number + "//" + Date.Year;
+                return "№" + CategoryID + "-" + Number + "/" + Date.Year;
             }
         }
         public string JudgeFullInfo

@@ -2,7 +2,6 @@ C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Arch
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\Archivarius.exe
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\Archivarius.pdb
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\ControlzEx.dll
-C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\Cryptography.dll
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\EntityFramework.dll
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\MahApps.Metro.dll
@@ -44,3 +43,7 @@ C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Arch
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Archivarius.csproj.CopyComplete
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Archivarius.exe
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Archivarius.pdb
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\itextsharp.dll
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\itextsharp.xml
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
