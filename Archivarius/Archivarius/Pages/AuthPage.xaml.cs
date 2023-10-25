@@ -35,6 +35,7 @@ namespace Archivarius.Pages
                    (worker.EnterData.Password.ToString(), PasswordBox.Password))
                 {
                     Properties.Settings.Default.AfterAuthPanelVisible = "Visible";
+                    Properties.Settings.Default.WorkerID = worker.ID;
                     NavigationService.Navigate(new AllCasePage(worker));
                 }
                 else

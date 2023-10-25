@@ -11,7 +11,6 @@ C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Arch
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\Microsoft.Xaml.Behaviors.dll
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\ControlzEx.pdb
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\ControlzEx.xml
-C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\Cryptography.pdb
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\EntityFramework.xml
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\MahApps.Metro.pdb
@@ -47,3 +46,5 @@ C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Arch
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\itextsharp.dll
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\itextsharp.xml
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\SignatureLibrary.dll
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\SignatureLibrary.pdb

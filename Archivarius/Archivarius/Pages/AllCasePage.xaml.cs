@@ -1,6 +1,8 @@
 ﻿using Archivarius.Model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,7 +41,31 @@ namespace Archivarius.Pages
         {
             MenuItem menu = sender as MenuItem;
             Case selectedItem = menu.DataContext as Case;
-            Classes.Print.PrintInnerDocument.Print(selectedItem);
+            try
+            {
+                Classes.Print.PrintAct.Print(selectedItem, true);
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Pdf Files|*.pdf";
+                openFileDialog.ShowDialog();
+                if (string.IsNullOrEmpty(openFileDialog.FileName))
+                {
+                    File.Delete("InnerPDF.pdf");
+                    MessageBox.Show("Пожалуйста, выберите файл!", "Ошибка!",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    SignatureLibrary.Signature.Signed(openFileDialog.FileName);
+                    File.Delete("InnerPDF.pdf");
+                    MessageBox.Show("Выполнено!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show
+                    ("Пожалуйста, проверьте, чтобы выбранный файл не был открыт в другом приложении!", "Ошибка!",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
