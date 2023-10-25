@@ -28,12 +28,12 @@ namespace Archivarius.Pages
             InitializeComponent();
             Properties.Settings.Default.FullName = "Здравствуйте, " + worker.Name + " " +
                 (worker.Patronimyc ?? "") + "!";
-            CaseListView.ItemsSource = DB.entities.Case.ToList();
+            Load();
         }
         public AllCasePage()
         {
             InitializeComponent();
-            CaseListView.ItemsSource = DB.entities.Case.ToList();
+            Load();
         }
 
         //Печать акта о приеме
@@ -41,31 +41,35 @@ namespace Archivarius.Pages
         {
             MenuItem menu = sender as MenuItem;
             Case selectedItem = menu.DataContext as Case;
-            try
+            NavigationService.Navigate(new AllActPage(selectedItem));
+        }
+        //выдача/сдача
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            MenuItem menu = sender as MenuItem;
+            Case selectedItem = menu.DataContext as Case;
+            
+        }
+        //изменение
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Load()
+        {
+            var CaseList = DB.entities.Case.ToList();
+            foreach (var item in CaseList)
             {
-                Classes.Print.PrintAct.Print(selectedItem, true);
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Pdf Files|*.pdf";
-                openFileDialog.ShowDialog();
-                if (string.IsNullOrEmpty(openFileDialog.FileName))
+                if (item.Act.Count() % 2 == 1)
                 {
-                    File.Delete("InnerPDF.pdf");
-                    MessageBox.Show("Пожалуйста, выберите файл!", "Ошибка!",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                    item.BackColor = "White";
                 }
                 else
                 {
-                    SignatureLibrary.Signature.Signed(openFileDialog.FileName);
-                    File.Delete("InnerPDF.pdf");
-                    MessageBox.Show("Выполнено!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    item.BackColor = "#DDDDDD";
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show
-                    ("Пожалуйста, проверьте, чтобы выбранный файл не был открыт в другом приложении!", "Ошибка!",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            CaseListView.ItemsSource = CaseList;
         }
     }
 }

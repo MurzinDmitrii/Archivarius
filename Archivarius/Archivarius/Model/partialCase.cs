@@ -24,5 +24,23 @@ namespace Archivarius.Model
                 (Worker.Patronimyc == null ? "" : $"{Worker.Patronimyc[0]}.");
             }
         }
+        public string BackColor
+        {
+            get; set;
+        }
+        public string ButtonType
+        {
+            get
+            {
+                if(Act.Count() % 2 == 1)
+                {
+                    return "Выдать";
+                }
+                else
+                {
+                    return "Принять";
+                }
+            }
+        }
     }
 }

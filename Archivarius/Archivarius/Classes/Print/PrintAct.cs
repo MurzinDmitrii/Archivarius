@@ -11,8 +11,9 @@ namespace Archivarius.Classes.Print
 {
     internal class PrintAct
     {
-        public static void Print(Case innercase, bool inner)
+        public static void Print(Act act)
         {
+            bool inner = act.Type.Name == "На сдачу";
             var worker = DB.entities.Worker.FirstOrDefault(c => c.ID == Properties.Settings.Default.WorkerID);
             var document = new iTextSharp.text.Document();
             using (var writer = PdfWriter.GetInstance(document, new FileStream("InnerPDF.pdf", FileMode.Create)))
@@ -25,20 +26,20 @@ namespace Archivarius.Classes.Print
                 writer.DirectContent.SetFontAndSize(baseFont, 13);
                 writer.DirectContent.ShowTextAligned(iTextSharp.text.Element.ALIGN_LEFT, 
                     "Акт о " + (inner ? "сдаче в архив дела ": "выдаче из архива дела ") + 
-                    innercase.CaseFullNumber.ToString() +
-                    " от " + innercase.Date.ToShortDateString(), 50, 780, 0);
+                    act.Case.CaseFullNumber.ToString() +
+                    " от " + act.Case.Date.ToShortDateString(), 50, 780, 0);
                 writer.DirectContent.ShowTextAligned(2 * iTextSharp.text.Element.ALIGN_LEFT,
-                    "Данный документ подтверждает, что дело " + innercase.CaseFullNumber.ToString() +
-                    " от " + innercase.Date.ToShortDateString(),
+                    "Данный документ подтверждает, что дело " + act.Case.CaseFullNumber.ToString() +
+                    " от " + act.Case.Date.ToShortDateString(),
                     50, 740, 0);
                 writer.DirectContent.ShowTextAligned(3 * iTextSharp.text.Element.ALIGN_LEFT,
                     (inner ? "было передано в архив" : "было изъято из архива"),
                     50, 720, 0);
                 writer.DirectContent.ShowTextAligned(3 * iTextSharp.text.Element.ALIGN_LEFT,
-                    "Дело передал: " + (inner ? innercase.Worker.WorkerFullName : worker.WorkerFullName),
+                    "Дело передал: " + (inner ? act.Case.Worker.WorkerFullName : worker.WorkerFullName),
                     50, 680, 0);
                 writer.DirectContent.ShowTextAligned(3 * iTextSharp.text.Element.ALIGN_LEFT,
-                    "Дело принял: " + (inner ? worker.WorkerFullName : innercase.Worker.WorkerFullName),
+                    "Дело принял: " + (inner ? worker.WorkerFullName : act.Case.Worker.WorkerFullName),
                 50, 640, 0);
                 writer.DirectContent.ShowTextAligned(3 * iTextSharp.text.Element.ALIGN_LEFT,
                     DateTime.Now.ToShortDateString(),
