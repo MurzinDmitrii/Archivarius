@@ -41,7 +41,7 @@
                                 <TextBlock Text="{Binding JudgeFullInfo}" Margin="5"/>
                                 <StackPanel.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Редактировать информацию"/>
+                                        <MenuItem Header="Редактировать информацию" Click="MenuItem_Click_2"/>
                                         <MenuItem Header="Удалить" Click="MenuItem_Click_1"/>
                                         <MenuItem Click="MenuItem_Click" Header="Печать акта о приеме"/>
                                     </ContextMenu>
