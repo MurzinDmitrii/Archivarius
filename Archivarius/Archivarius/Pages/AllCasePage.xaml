@@ -42,7 +42,7 @@
                                 <StackPanel.ContextMenu>
                                     <ContextMenu>
                                         <MenuItem Header="Редактировать информацию"/>
-                                        <MenuItem Header="Удалить"/>
+                                        <MenuItem Header="Удалить" Click="MenuItem_Click_1"/>
                                         <MenuItem Click="MenuItem_Click" Header="Печать акта о приеме"/>
                                     </ContextMenu>
                                 </StackPanel.ContextMenu>
