@@ -1,7 +1,2 @@
 Script.sql
-Archivarius/Archivarius/Archivarius/bin/Debug/CertificateData/Certificate.pfx
-Archivarius\Archivarius\Archivarius\bin\Debug\CertificateData\certificatePassword.txt
-Archivarius\Archivarius\Archivarius\bin\Debug\CertificateData\passCreator.txt
-Archivarius\Archivarius\Archivarius\bin\Release\CertificateData\Certificate.pfx
-Archivarius\Archivarius\Archivarius\bin\Release\CertificateData\certificatePassword.txt
-Archivarius\Archivarius\Archivarius\bin\Release\CertificateData\passCreator.txt
+Archivarius/Archivarius/Archivarius/bin/Debug/CertificateData
