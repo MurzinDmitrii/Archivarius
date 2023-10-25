@@ -46,5 +46,17 @@ namespace Archivarius.Properties {
                 this["FullName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WorkerID {
+            get {
+                return ((int)(this["WorkerID"]));
+            }
+            set {
+                this["WorkerID"] = value;
+            }
+        }
     }
 }

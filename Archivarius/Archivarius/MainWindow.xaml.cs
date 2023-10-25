@@ -28,5 +28,10 @@ namespace Archivarius
             HelloBox.DataContext = Properties.Settings.Default;
             MainFrame.Navigate(new AuthPage());
         }
+
+        private void AllCaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AllCasePage());
+        }
     }
 }
