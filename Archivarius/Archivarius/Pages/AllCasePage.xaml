@@ -40,7 +40,7 @@
                                 <TextBlock Text="{Binding Description}" Margin="5"/>
                                 <TextBlock Text="{Binding JudgeFullInfo}" Margin="5"/>
                                 <StackPanel.ContextMenu>
-                                    <ContextMenu>
+                                    <ContextMenu> 
                                         <MenuItem Header="Редактировать информацию" Click="MenuItem_Click_2"/>
                                         <MenuItem Header="Удалить" Click="MenuItem_Click_1"/>
                                         <MenuItem Click="MenuItem_Click" Header="Печать акта о приеме"/>
