@@ -215,6 +215,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddAct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryID" Type="int" Mode="In" />
+          <Parameter Name="Number" Type="int" Mode="In" />
+          <Parameter Name="CaseDate" Type="datetime" Mode="In" />
+          <Parameter Name="TypeID" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="Хранилище ArhivariusModelContainer">
           <EntitySet Name="Act" EntityType="Self.Act" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
@@ -522,6 +529,13 @@
             <End Role="Worker" EntitySet="Worker" />
             <End Role="EnterData" EntitySet="EnterData" />
           </AssociationSet>
+          <FunctionImport Name="AddAct">
+            <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+            <Parameter Name="Number" Mode="In" Type="Int32" />
+            <Parameter Name="CaseDate" Mode="In" Type="DateTime" />
+            <Parameter Name="TypeID" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="EnterData">
           <Key>
@@ -646,6 +660,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddAct" FunctionName="Хранилище ArhivariusModel.AddAct" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

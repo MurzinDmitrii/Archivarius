@@ -12,7 +12,7 @@ namespace Archivarius.Model
         {
             get
             {
-                return FirstName + " " + Name[0] + "." +
+                return FirstName + " " + (Name == null ? "" : $"{Name[0]}.") +
                 (Patronimyc == null ? "" : $"{Patronimyc[0]}.");
             }
         }

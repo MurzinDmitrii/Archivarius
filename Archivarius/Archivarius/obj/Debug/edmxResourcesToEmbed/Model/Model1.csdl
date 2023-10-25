@@ -255,6 +255,13 @@
       <End Role="Worker" EntitySet="Worker" />
       <End Role="EnterData" EntitySet="EnterData" />
     </AssociationSet>
+    <FunctionImport Name="AddAct">
+      <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+      <Parameter Name="Number" Mode="In" Type="Int32" />
+      <Parameter Name="CaseDate" Mode="In" Type="DateTime" />
+      <Parameter Name="TypeID" Mode="In" Type="Int32" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="EnterData">
     <Key>

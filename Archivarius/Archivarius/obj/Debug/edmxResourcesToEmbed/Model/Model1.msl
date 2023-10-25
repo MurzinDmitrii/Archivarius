@@ -98,5 +98,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddAct" FunctionName="Хранилище ArhivariusModel.AddAct" />
   </EntityContainerMapping>
 </Mapping>

@@ -13,17 +13,23 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBox
-                    x:Name="LoginBox"
+                    x:Name="SearchBox"
                     Width="150"
                     Margin="5"
                     MaxLength="50"
+                    TextChanged="SearchBox_TextChanged"
                     materialDesign:HintAssist.Hint="Поиск по номеру"/>
                 <DatePicker
+                    x:Name="SearchDatePicker"
                     Width="150"
+                    SelectedDateChanged="SearchDatePicker_SelectedDateChanged"
                     Margin="5,0,5,0"
                     materialDesign:TextFieldAssist.HasClearButton="True"
                     materialDesign:HintAssist.Hint="Поиск по дате"/>
                 <ComboBox
+                    SelectionChanged="SearchDatePicker_SelectedDateChanged"
+                    x:Name="SearchComboBox"
+                    DisplayMemberPath="WorkerFullName"
                     materialDesign:HintAssist.Hint="Поиск по судье"
                     Margin="5,0,5,0"
                     materialDesign:HintAssist.HintOpacity=".26"

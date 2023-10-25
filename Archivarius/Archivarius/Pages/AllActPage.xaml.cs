@@ -54,6 +54,11 @@ namespace Archivarius.Pages
                     (c => c.Date.ToShortDateString() == time.ToShortDateString()).ToList();
             }
             ActListView.ItemsSource = ActList;
+            if (ActList.Count == 0)
+            {
+                MessageBox.Show("По результатам поиска не найдено подходящих вариантов",
+                    "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
