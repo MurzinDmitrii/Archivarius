@@ -42,7 +42,7 @@ namespace Archivarius.Classes.Print
                     "Дело принял: " + (inner ? worker.WorkerFullName : act.Case.Worker.WorkerFullName),
                 50, 640, 0);
                 writer.DirectContent.ShowTextAligned(3 * iTextSharp.text.Element.ALIGN_LEFT,
-                    DateTime.Now.ToShortDateString(),
+                    act.Date.ToShortTimeString(),
                 50, 600, 0);
                 writer.DirectContent.EndText();
                 document.Close();

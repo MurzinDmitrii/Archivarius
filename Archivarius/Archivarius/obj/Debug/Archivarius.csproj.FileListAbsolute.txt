@@ -50,3 +50,7 @@ C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Arch
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\bin\Debug\SignatureLibrary.pdb
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AllActPage.g.cs
 C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AllActPage.baml
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AllQueryPage.g.cs
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AllQueryPage.baml
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AddQueryPage.g.cs
+C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AddQueryPage.baml

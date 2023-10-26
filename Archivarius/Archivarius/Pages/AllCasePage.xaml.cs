@@ -64,6 +64,7 @@ namespace Archivarius.Pages
             {
                 DB.entities.AddAct(selectedItem.CategoryID, selectedItem.Number, selectedItem.Date, 1, DateTime.Now);
             }
+            DB.entities.SaveChanges();
             Load();
         }
         //изменение
@@ -73,6 +74,7 @@ namespace Archivarius.Pages
         }
         private void Load()
         {
+            DB.entities = new ArhivariusEntities1();
             var CaseList = DB.entities.Case.ToList();
             if (SearchComboBox.SelectedIndex != 0)
             {
