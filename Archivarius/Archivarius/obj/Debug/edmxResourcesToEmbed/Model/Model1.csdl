@@ -50,6 +50,8 @@
     <NavigationProperty Name="Category" Relationship="Self.FK__Case__CategoryID__47DBAE45" FromRole="Case" ToRole="Category" />
     <NavigationProperty Name="Worker" Relationship="Self.FK__Case__WorkerID__46E78A0C" FromRole="Case" ToRole="Worker" />
     <NavigationProperty Name="Query" Relationship="Self.FK__Query__59FA5E80" FromRole="Case" ToRole="Query" />
+    <NavigationProperty Name="Applicant" Relationship="ArhivariusModel.FK__Applicant__693CA210" FromRole="Case" ToRole="Applicant" />
+    <NavigationProperty Name="Responder" Relationship="ArhivariusModel.FK__Responder__6A30C649" FromRole="Case" ToRole="Responder" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -262,6 +264,37 @@
       <Parameter Name="TypeID" Mode="In" Type="Int32" />
       <Parameter Name="Date" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <EntitySet Name="Applicant" EntityType="ArhivariusModel.Applicant" />
+    <EntitySet Name="Participants" EntityType="ArhivariusModel.Participants" />
+    <EntitySet Name="Responder" EntityType="ArhivariusModel.Responder" />
+    <AssociationSet Name="FK__Applicant__693CA210" Association="ArhivariusModel.FK__Applicant__693CA210">
+      <End Role="Case" EntitySet="Case" />
+      <End Role="Applicant" EntitySet="Applicant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicant__Parti__6754599E" Association="ArhivariusModel.FK__Applicant__Parti__6754599E">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Applicant" EntitySet="Applicant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Responder__6A30C649" Association="ArhivariusModel.FK__Responder__6A30C649">
+      <End Role="Case" EntitySet="Case" />
+      <End Role="Responder" EntitySet="Responder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Responder__Parti__68487DD7" Association="ArhivariusModel.FK__Responder__Parti__68487DD7">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Responder" EntitySet="Responder" />
+    </AssociationSet>
+    <FunctionImport Name="AddApplicant">
+      <Parameter Name="ParticipantsID" Mode="In" Type="Int32" />
+      <Parameter Name="Number" Mode="In" Type="Int32" />
+      <Parameter Name="CaseDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddResponder">
+      <Parameter Name="ParticipantsID" Mode="In" Type="Int32" />
+      <Parameter Name="Number" Mode="In" Type="Int32" />
+      <Parameter Name="CaseDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="EnterData">
     <Key>
@@ -280,6 +313,99 @@
       </Principal>
       <Dependent Role="EnterData">
         <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Applicant">
+    <Key>
+      <PropertyRef Name="StringNumber" />
+    </Key>
+    <Property Name="StringNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParticipantID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Case" Relationship="ArhivariusModel.FK__Applicant__693CA210" FromRole="Applicant" ToRole="Case" />
+    <NavigationProperty Name="Participants" Relationship="ArhivariusModel.FK__Applicant__Parti__6754599E" FromRole="Applicant" ToRole="Participants" />
+  </EntityType>
+  <EntityType Name="Participants">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Applicant" Relationship="ArhivariusModel.FK__Applicant__Parti__6754599E" FromRole="Participants" ToRole="Applicant" />
+    <NavigationProperty Name="Responder" Relationship="ArhivariusModel.FK__Responder__Parti__68487DD7" FromRole="Participants" ToRole="Responder" />
+  </EntityType>
+  <EntityType Name="Responder">
+    <Key>
+      <PropertyRef Name="StringNumber" />
+    </Key>
+    <Property Name="StringNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParticipantID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Case" Relationship="ArhivariusModel.FK__Responder__6A30C649" FromRole="Responder" ToRole="Case" />
+    <NavigationProperty Name="Participants" Relationship="ArhivariusModel.FK__Responder__Parti__68487DD7" FromRole="Responder" ToRole="Participants" />
+  </EntityType>
+  <Association Name="FK__Applicant__693CA210">
+    <End Type="ArhivariusModel.Case" Role="Case" Multiplicity="1" />
+    <End Type="ArhivariusModel.Applicant" Role="Applicant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Case">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Principal>
+      <Dependent Role="Applicant">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicant__Parti__6754599E">
+    <End Type="ArhivariusModel.Participants" Role="Participants" Multiplicity="1" />
+    <End Type="ArhivariusModel.Applicant" Role="Applicant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Applicant">
+        <PropertyRef Name="ParticipantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Responder__6A30C649">
+    <End Type="ArhivariusModel.Case" Role="Case" Multiplicity="1" />
+    <End Type="ArhivariusModel.Responder" Role="Responder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Case">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Principal>
+      <Dependent Role="Responder">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Responder__Parti__68487DD7">
+    <End Type="ArhivariusModel.Participants" Role="Participants" Multiplicity="1" />
+    <End Type="ArhivariusModel.Responder" Role="Responder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Responder">
+        <PropertyRef Name="ParticipantID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

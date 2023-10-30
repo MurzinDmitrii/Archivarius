@@ -1,0 +1,64 @@
+﻿<Page x:Class="Archivarius.Pages.AddParticipantsPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Archivarius.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddParticipantsPage">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    x:Name="AddButton"
+                    Height="30"
+                    materialDesign:ButtonAssist.CornerRadius="15"
+                    Background="#005691"
+                    Width="109"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    ToolTip="Добавить нового участника процесса"
+                    Click="AddButton_Click"  Margin="5">
+                    <TextBlock Text="Добавить" />
+                </Button>
+                <Button
+                    x:Name="BackButton"
+                    Height="30"
+                    materialDesign:ButtonAssist.CornerRadius="15"
+                    Background="#005691"
+                    Width="109"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    ToolTip="Вернуться"
+                    Click="BackButton_Click"  Margin="5">
+                    <TextBlock Text="Назад" />
+                </Button>
+            </StackPanel>
+            <StackPanel Margin="5,100">
+                <ComboBox
+                x:Name="ParticipantsComboBox"
+                Width="150"
+                DisplayMemberPath="ParticipantsFull"
+                materialDesign:HintAssist.Hint="Участник"
+                materialDesign:HintAssist.HintOpacity=".26"
+                IsEditable="True"
+                Margin="20,20,20,0"/>
+                <Button
+                    x:Name="SaveButton"
+                    Height="30"
+                    materialDesign:ButtonAssist.CornerRadius="15"
+                    Background="#005691"
+                    Width="109"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    ToolTip="Нажмите для сохранения данных"
+                    Click="SaveButton_Click"  Margin="5">
+                    <TextBlock Text="Сохранить" />
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -12,6 +12,16 @@
     <Property Name="TypeID" Type="int" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="Applicant">
+    <Key>
+      <PropertyRef Name="StringNumber" />
+    </Key>
+    <Property Name="StringNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParticipantID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="Article">
     <Key>
       <PropertyRef Name="Number" />
@@ -55,6 +65,17 @@
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Participants">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+  </EntityType>
   <EntityType Name="Post">
     <Key>
       <PropertyRef Name="ID" />
@@ -68,6 +89,16 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Responder">
+    <Key>
+      <PropertyRef Name="StringNumber" />
+    </Key>
+    <Property Name="StringNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParticipantID" Type="int" Nullable="false" />
     <Property Name="CategoryID" Type="int" Nullable="false" />
     <Property Name="Number" Type="int" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
@@ -115,6 +146,34 @@
       </Principal>
       <Dependent Role="Act">
         <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicant__693CA210">
+    <End Role="Case" Type="Self.Case" Multiplicity="1" />
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Case">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Principal>
+      <Dependent Role="Applicant">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicant__Parti__6754599E">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Applicant">
+        <PropertyRef Name="ParticipantID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -198,6 +257,34 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Responder__6A30C649">
+    <End Role="Case" Type="Self.Case" Multiplicity="1" />
+    <End Role="Responder" Type="Self.Responder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Case">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Principal>
+      <Dependent Role="Responder">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Responder__Parti__68487DD7">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+    <End Role="Responder" Type="Self.Responder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Responder">
+        <PropertyRef Name="ParticipantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Worker__PostID__4BAC3F29">
     <End Role="Post" Type="Self.Post" Multiplicity="1" />
     <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
@@ -217,15 +304,30 @@
     <Parameter Name="TypeID" Type="int" Mode="In" />
     <Parameter Name="Date" Type="datetime" Mode="In" />
   </Function>
+  <Function Name="AddApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ParticipantsID" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="int" Mode="In" />
+    <Parameter Name="CaseDate" Type="datetime" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddResponder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ParticipantsID" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="int" Mode="In" />
+    <Parameter Name="CaseDate" Type="datetime" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="Хранилище ArhivariusModelContainer">
     <EntitySet Name="Act" EntityType="Self.Act" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArticleCase" EntityType="Self.ArticleCase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EnterData" EntityType="Self.EnterData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participants" EntityType="Self.Participants" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Query" EntityType="Self.Query" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Responder" EntityType="Self.Responder" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Act__4AB81AF0" Association="Self.FK__Act__4AB81AF0">
@@ -235,6 +337,14 @@
     <AssociationSet Name="FK__Act__TypeID__4CA06362" Association="Self.FK__Act__TypeID__4CA06362">
       <End Role="Type" EntitySet="Type" />
       <End Role="Act" EntitySet="Act" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicant__693CA210" Association="Self.FK__Applicant__693CA210">
+      <End Role="Case" EntitySet="Case" />
+      <End Role="Applicant" EntitySet="Applicant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicant__Parti__6754599E" Association="Self.FK__Applicant__Parti__6754599E">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Applicant" EntitySet="Applicant" />
     </AssociationSet>
     <AssociationSet Name="FK__ArticleCa__Artic__48CFD27E" Association="Self.FK__ArticleCa__Artic__48CFD27E">
       <End Role="Article" EntitySet="Article" />
@@ -259,6 +369,14 @@
     <AssociationSet Name="FK__Query__59FA5E80" Association="Self.FK__Query__59FA5E80">
       <End Role="Case" EntitySet="Case" />
       <End Role="Query" EntitySet="Query" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Responder__6A30C649" Association="Self.FK__Responder__6A30C649">
+      <End Role="Case" EntitySet="Case" />
+      <End Role="Responder" EntitySet="Responder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Responder__Parti__68487DD7" Association="Self.FK__Responder__Parti__68487DD7">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Responder" EntitySet="Responder" />
     </AssociationSet>
     <AssociationSet Name="FK__Worker__PostID__4BAC3F29" Association="Self.FK__Worker__PostID__4BAC3F29">
       <End Role="Post" EntitySet="Post" />

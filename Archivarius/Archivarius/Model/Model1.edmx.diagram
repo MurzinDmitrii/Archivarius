@@ -24,6 +24,13 @@
         <AssociationConnector Association="ArhivariusModel.FK__Worker__PostID__4BAC3F29" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ArhivariusModel.EnterData" Width="1.5" PointX="5.25" PointY="7.875" />
         <AssociationConnector Association="ArhivariusModel.FK__EnterData__ID__5FB337D6" />
+        <EntityTypeShape EntityType="ArhivariusModel.Applicant" Width="1.5" PointX="10.875" PointY="8.5" />
+        <EntityTypeShape EntityType="ArhivariusModel.Participants" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="ArhivariusModel.Responder" Width="1.5" PointX="10.875" PointY="12.5" />
+        <AssociationConnector Association="ArhivariusModel.FK__Applicant__693CA210" />
+        <AssociationConnector Association="ArhivariusModel.FK__Applicant__Parti__6754599E" />
+        <AssociationConnector Association="ArhivariusModel.FK__Responder__6A30C649" />
+        <AssociationConnector Association="ArhivariusModel.FK__Responder__Parti__68487DD7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

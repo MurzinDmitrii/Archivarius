@@ -12,32 +12,22 @@ namespace Archivarius.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Case
+    public partial class Participants
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Case()
+        public Participants()
         {
-            this.Act = new HashSet<Act>();
-            this.ArticleCase = new HashSet<ArticleCase>();
-            this.Query = new HashSet<Query>();
             this.Applicant = new HashSet<Applicant>();
             this.Responder = new HashSet<Responder>();
         }
     
-        public int CategoryID { get; set; }
-        public int WorkerID { get; set; }
-        public int Number { get; set; }
-        public System.DateTime Date { get; set; }
-        public string Description { get; set; }
+        public int ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Patronymic { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Act> Act { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ArticleCase> ArticleCase { get; set; }
-        public virtual Category Category { get; set; }
-        public virtual Worker Worker { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Query> Query { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Applicant> Applicant { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

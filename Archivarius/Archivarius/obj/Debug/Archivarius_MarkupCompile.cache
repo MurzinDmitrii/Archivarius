@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\obj\Debug\
+C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\obj\Debug\
 Archivarius
 none
 false
 DEBUG;TRACE
-C:\Users\Dmitrii\Desktop\Учеба\Четвертый курс\Archivarius\Archivarius\Archivarius\App.xaml
-61880978968
+C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\App.xaml
+9-1759351681
 2739969757
-28-1286086138
-311623707170
-MainWindow.xaml;Pages\AddQueryPage.xaml;Pages\AllActPage.xaml;Pages\AllCasePage.xaml;Pages\AllQueryPage.xaml;Pages\AuthPage.xaml;
+35-1429856112
+31-518563031
+MainWindow.xaml;Pages\AddCasePage.xaml;Pages\AddParticipantsInDBPage.xaml;Pages\AddParticipantsPage.xaml;Pages\AddQueryPage.xaml;Pages\AllActPage.xaml;Pages\AllCasePage.xaml;Pages\AllQueryPage.xaml;Pages\AuthPage.xaml;
 
 False
 

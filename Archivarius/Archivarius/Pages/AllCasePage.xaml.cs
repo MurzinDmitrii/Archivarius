@@ -41,6 +41,13 @@ namespace Archivarius.Pages
         public AllCasePage()
         {
             InitializeComponent();
+            var JudgeList = DB.entities.Worker.Where(c => c.Post.Name == "Судья");
+            SearchComboBox.Items.Add(new Model.Worker() { FirstName = "Все" });
+            foreach (var item in JudgeList)
+            {
+                SearchComboBox.Items.Add(item);
+            }
+            SearchComboBox.SelectedIndex = 0;
             Load();
         }
 

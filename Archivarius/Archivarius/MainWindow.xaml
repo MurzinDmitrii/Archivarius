@@ -39,6 +39,7 @@
                         Width="100"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Click="AddButton_Click"
                         ToolTip="Внести дело в архив">
                         <TextBlock Text="Добавить" />
                     </Button>

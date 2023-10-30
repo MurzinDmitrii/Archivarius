@@ -38,5 +38,10 @@ namespace Archivarius
         {
             MainFrame.Navigate(new AllQueryPage());
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AddCasePage());
+        }
     }
 }
