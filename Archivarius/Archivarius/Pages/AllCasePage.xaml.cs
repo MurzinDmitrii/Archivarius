@@ -77,7 +77,9 @@ namespace Archivarius.Pages
         //изменение
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-
+            MenuItem menu = sender as MenuItem;
+            Case selectedItem = menu.DataContext as Case;
+            NavigationService.Navigate(new AddCasePage(selectedItem));
         }
         private void Load()
         {

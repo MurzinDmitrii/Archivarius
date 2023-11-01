@@ -28,8 +28,6 @@ namespace Archivarius.Pages
             InitializeComponent();
             this.innercase = innercase;
             this.type = type;
-            ParticipantsComboBox.ItemsSource = DB.entities.Participants.ToList();
-            ParticipantsComboBox.SelectedIndex = 0;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -44,24 +42,38 @@ namespace Archivarius.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (type)
+            try
             {
-                /*DB.entities.AddApplicant((ParticipantsComboBox.SelectedItem as Participants).ID, innercase.Number,
-                    innercase.Date, innercase.CategoryID);*/
-                Applicant applicant = new Applicant();
-                applicant.Case = innercase;
-                applicant.Participants = (ParticipantsComboBox.SelectedItem as Participants);
+                if (type)
+                {
+                    DB.entities.AddApplicant((ParticipantsComboBox.SelectedItem as Participants).ID, innercase.Number,
+                        innercase.Date, innercase.CategoryID);
+                    DB.entities = new ArhivariusEntities1();
+                }
+                else
+                {
+                    DB.entities.AddResponder((ParticipantsComboBox.SelectedItem as Participants).ID, innercase.Number,
+                        innercase.Date, innercase.CategoryID);
+                    DB.entities = new ArhivariusEntities1();
+                }
+                DB.entities = new ArhivariusEntities1();
+                NavigationService.GoBack();
             }
-            else
+            catch
             {
-                /*DB.entities.AddResponder((ParticipantsComboBox.SelectedItem as Participants).ID, innercase.Number,
-                    innercase.Date, innercase.CategoryID);*/
-                Responder responder = new Responder();
-                responder.Case = innercase;
-                responder.Participants = (ParticipantsComboBox.SelectedItem as Participants);
+                MessageBox.Show
+                    ("Ошибка!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            DB.entities = new ArhivariusEntities1();
-            NavigationService.GoBack();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Load();
+        }
+        private void Load()
+        {
+            ParticipantsComboBox.ItemsSource = DB.entities.Participants.ToList();
+            ParticipantsComboBox.SelectedIndex = 0;
         }
     }
 }

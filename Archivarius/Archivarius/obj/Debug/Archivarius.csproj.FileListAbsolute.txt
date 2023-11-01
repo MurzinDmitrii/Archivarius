@@ -114,3 +114,7 @@ C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\obj\
 C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AddCasePage.baml
 C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AddParticipantsInDBPage.baml
 C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AddParticipantsPage.baml
+C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AddCase2PartPage.g.cs
+C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AddCase2PartPage.baml
+C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\bin\Debug\SignatureLibrary.dll
+C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\bin\Debug\SignatureLibrary.pdb

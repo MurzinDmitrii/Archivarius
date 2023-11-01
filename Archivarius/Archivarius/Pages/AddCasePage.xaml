@@ -10,8 +10,7 @@
       Title="AddCasePage">
 
     <Grid>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" >
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="" >
                     <StackPanel Orientation="Vertical" Margin="5">
                         <ComboBox
@@ -64,44 +63,7 @@
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     TextWrapping="Wrap"
                     VerticalScrollBarVisibility="Auto" />
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Истцы"/>
-                        <ListView x:Name="ApplicantListView" Width="200" Height="70">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding ParticipantsFull}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Добавить" Click="MenuItem_Click"/>
-                                </ContextMenu>
-                            </ListView.ContextMenu>
-                        </ListView>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Ответчики"/>
-                        <ListView x:Name="ResponderListView" Width="200" Height="70" >
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding ParticipantsFull}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            <ListView.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Добавить" Click="MenuItem_Click_1"/>
-                                </ContextMenu>
-                            </ListView.ContextMenu>
-                        </ListView>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
-            <Button
+                <Button
                     x:Name="SaveButton"
                     Height="30"
                     materialDesign:ButtonAssist.CornerRadius="15"
@@ -109,9 +71,9 @@
                     Width="109"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                    ToolTip="Нажмите для сохранения данных"
+                    ToolTip="Нажмите перехода далее"
                     Click="SaveButton_Click"  Margin="5">
-                <TextBlock Text="Сохранить" />
+                <TextBlock Text="Далее" />
             </Button>
         </StackPanel>
     </Grid>

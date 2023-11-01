@@ -21,6 +21,7 @@ namespace Archivarius.Pages
     /// </summary>
     public partial class AddCasePage : Page
     {
+        bool newCase = true;
         Case newcase = new Case() 
         { 
             Date = DateTime.Now.Date,
@@ -31,6 +32,8 @@ namespace Archivarius.Pages
             JudgeComboBox.ItemsSource = DB.entities.Worker.Where(c => c.Post.Name == "Судья").ToList();
             CategoryComboBox.ItemsSource = DB.entities.Category.ToList();
             ArticleComboBox.ItemsSource = DB.entities.Article.ToList();
+            this.DataContext = newcase;
+            newCase = true;
         }
         public AddCasePage(Case newcase)
         {
@@ -39,34 +42,45 @@ namespace Archivarius.Pages
             CategoryComboBox.ItemsSource = DB.entities.Category.ToList();
             ArticleComboBox.ItemsSource = DB.entities.Article.ToList();
             this.newcase = newcase;
-        }
-        //Добавить истцов
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AddParticipantsPage(newcase, true));
-        }
-        //Добавить ответчиков
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AddParticipantsPage(newcase, false));
+            this.DataContext = newcase;
+            var article = newcase.ArticleCase.FirstOrDefault(c => c.CaseNumber == newcase.Number);
+            ArticleComboBox.DataContext = article;
+            ArticleComboBox.SelectedItem = article.Article;
+            newCase = false;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            this.DataContext = newcase;
-            DB.entities.Case.Add(newcase);
-            if (ArticleComboBox.SelectedItem != null)
+            try
             {
-                ArticleCase articleCase = new ArticleCase()
+                if(newcase.Date > DateTime.Now.Date)
                 {
-                    Case = newcase,
-                    Article = (ArticleComboBox.SelectedItem as Article)
-                };
-                DB.entities.ArticleCase.Add(articleCase);
+                    throw new InvalidOperationException("Date is future");
+                }
+                if (newCase)
+                {
+                    DB.entities.Case.Add(newcase);
+
+                }
+                if (ArticleComboBox.SelectedItem != null)
+                {
+                    ArticleCase articleCase = new ArticleCase()
+                    {
+                        Case = newcase,
+                        Article = (ArticleComboBox.SelectedItem as Article)
+                    };
+                    DB.entities.ArticleCase.Add(articleCase);
+                }
+                DB.entities.SaveChanges();
+                if (newCase)
+                    DB.entities.AddAct(newcase.CategoryID, newcase.Number, newcase.Date, 1, DateTime.Now);
+                NavigationService.Navigate(new AddCase2PartPage(newcase));
             }
-            DB.entities.SaveChanges();
-            DB.entities.AddAct(newcase.CategoryID, newcase.Number, newcase.Date, 1, DateTime.Now);
-            MessageBox.Show("Выполнено!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+            catch
+            {
+                MessageBox.Show
+                    ("Проверьте правильность внесенных данных!","Ошибка!",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
         }
     }
 }

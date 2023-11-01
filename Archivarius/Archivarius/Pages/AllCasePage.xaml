@@ -47,9 +47,12 @@
                                 <TextBlock Text="{Binding JudgeFullInfo}" Margin="5"/>
                                 <StackPanel.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Редактировать информацию" Click="MenuItem_Click_2"/>
-                                        <MenuItem Header="{Binding ButtonType}" Click="MenuItem_Click_1"/>
-                                        <MenuItem Click="MenuItem_Click" Header="Просмотреть все акты"/>
+                                        <MenuItem x:Name="EditMenu"
+                                                  Header="Редактировать информацию" Click="MenuItem_Click_2"/>
+                                        <MenuItem x:Name="EditActMenu"
+                                                  Header="{Binding ButtonType}" Click="MenuItem_Click_1"/>
+                                        <MenuItem x:Name="AllActMenu" 
+                                                  Click="MenuItem_Click" Header="Просмотреть все акты"/>
                                     </ContextMenu>
                                 </StackPanel.ContextMenu>
                             </StackPanel>
