@@ -51,8 +51,8 @@
 
 ### Создан с
 
-<img src="Images/sharplogo.png" alt="AllCasePage" width="50" height="50" href="https://learn.microsoft.com/ru-ru/dotnet/csharp/">
-<img src="Images/mssqllogo.png" alt="AllCasePage" width="50" height="50" href="https://www.microsoft.com/ru-ru/sql-server/">
+<a href="https://learn.microsoft.com/ru-ru/dotnet/csharp/"><img src="Images/sharplogo.png" alt="AllCasePage" width="50" height="50"></a>
+<a href="https://www.microsoft.com/ru-ru/sql-server/"><img src="Images/mssqllogo.png" alt="AllCasePage" width="50" height="50"></a>
 
 <p align="right">(<a href="#readme-top">Наверх</a>)</p>
 
