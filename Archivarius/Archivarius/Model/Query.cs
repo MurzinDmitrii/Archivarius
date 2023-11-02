@@ -19,6 +19,7 @@ namespace Archivarius.Model
         public int CategoryID { get; set; }
         public int Number { get; set; }
         public System.DateTime Date { get; set; }
+        public bool Complited { get; set; }
     
         public virtual Case Case { get; set; }
     }

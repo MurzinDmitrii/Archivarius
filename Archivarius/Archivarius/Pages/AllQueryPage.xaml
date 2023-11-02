@@ -46,7 +46,7 @@
                       ScrollViewer.CanContentScroll="False" Margin="5" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="5" Width="525" Background="White">
+                            <StackPanel Margin="5" Width="525" Background="{Binding Color}">
                                 <TextBlock Text="{Binding Case.CaseFullNumber}" Margin="5"/>
                                 <TextBlock Text="{Binding Date}" Margin="5"/>
                                 <TextBlock Text="{Binding Description}" Margin="5"/>

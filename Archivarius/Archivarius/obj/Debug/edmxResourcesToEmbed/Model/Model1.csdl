@@ -79,6 +79,7 @@
     <Property Name="Number" Type="Int32" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Case" Relationship="Self.FK__Query__59FA5E80" FromRole="Query" ToRole="Case" />
+    <Property Name="Complited" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Type">
     <Key>

@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static iTextSharp.text.pdf.AcroFields;
 
 namespace Archivarius.Pages
 {
@@ -65,7 +66,18 @@ namespace Archivarius.Pages
             Case selectedItem = menu.DataContext as Case;
             if(selectedItem.ButtonType  == "Выдать")
             {
-                DB.entities.AddAct(selectedItem.CategoryID, selectedItem.Number, selectedItem.Date, 2, DateTime.Now);
+                var queryOut = DB.entities.Query.FirstOrDefault(c => c.Case.Number == selectedItem.Number && c.Complited == false);
+                if (queryOut != null)
+                {
+                    DB.entities.AddAct(selectedItem.CategoryID, selectedItem.Number, selectedItem.Date, 2, DateTime.Now);
+                    queryOut.Complited = true;
+                    DB.entities.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("У вас нет права на выдачу этого дела!",
+                    "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
             {

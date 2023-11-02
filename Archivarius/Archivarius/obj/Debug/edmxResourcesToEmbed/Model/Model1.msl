@@ -62,6 +62,7 @@
     <EntitySetMapping Name="Query">
       <EntityTypeMapping TypeName="ArhivariusModel.Query">
         <MappingFragment StoreEntitySet="Query">
+          <ScalarProperty Name="Complited" ColumnName="Complited" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />

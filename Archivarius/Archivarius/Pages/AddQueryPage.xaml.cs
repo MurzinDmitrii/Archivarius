@@ -34,6 +34,7 @@ namespace Archivarius.Pages
             Query query = new Query();
             query.Description = DescBox.Text == "" ? "-" : DescBox.Text;
             query.Case = CaseComboBox.SelectedItem as Case;
+            query.Complited = false;
             DB.entities.Query.Add(query);
             DB.entities.SaveChanges();
             NavigationService.GoBack();
