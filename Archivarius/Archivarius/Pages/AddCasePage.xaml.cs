@@ -44,8 +44,11 @@ namespace Archivarius.Pages
             this.newcase = newcase;
             this.DataContext = newcase;
             var article = newcase.ArticleCase.FirstOrDefault(c => c.CaseNumber == newcase.Number);
-            ArticleComboBox.DataContext = article;
-            ArticleComboBox.SelectedItem = article.Article;
+            if(article != null)
+            {
+                ArticleComboBox.DataContext = article;
+                ArticleComboBox.SelectedItem = article.Article;
+            }
             newCase = false;
         }
 

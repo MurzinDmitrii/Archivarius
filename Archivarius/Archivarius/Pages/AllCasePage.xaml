@@ -41,12 +41,9 @@
                       ScrollViewer.CanContentScroll="False" Margin="5" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="5" Width="525" Background="{Binding BackColor}">
-                                <TextBlock Text="{Binding CaseFullNumber}" Margin="5"/>
-                                <TextBlock Text="{Binding Description}" Margin="5"/>
-                                <TextBlock Text="{Binding JudgeFullInfo}" Margin="5"/>
+                            <StackPanel Margin="5" Width="525" Background="{Binding BackColor}" x:Name="CaseItem">
                                 <StackPanel.ContextMenu>
-                                    <ContextMenu>
+                                    <ContextMenu x:Name="CaseMenu">
                                         <MenuItem x:Name="EditMenu"
                                                   Header="Редактировать информацию" Click="MenuItem_Click_2"/>
                                         <MenuItem x:Name="EditActMenu"
@@ -55,6 +52,9 @@
                                                   Click="MenuItem_Click" Header="Просмотреть все акты"/>
                                     </ContextMenu>
                                 </StackPanel.ContextMenu>
+                                <TextBlock Text="{Binding CaseFullNumber}" Margin="5"/>
+                                <TextBlock Text="{Binding Description}" Margin="5"/>
+                                <TextBlock Text="{Binding JudgeFullInfo}" Margin="5"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

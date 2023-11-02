@@ -1,9 +1,11 @@
 ﻿using FlaUI.Core.AutomationElements;
 using FlaUI.Core.Conditions;
+using FlaUI.Core.Input;
 using FlaUI.UIA3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
+using System.Threading;
 
 namespace UnitTestProject
 {
@@ -51,24 +53,71 @@ namespace UnitTestProject
             passwordBox.Text = "123";
             var button = page.FindFirstDescendant(cf => cf.ByAutomationId("AuthButton")).AsButton();
             button.Click();
-            foreach(var item in page.FindAllChildren())
-            {
-
-            }
-            /*var editMenu = page.FindFirstDescendant(cf => cf.ByAutomationId("EditMenu"));
-            editMenu.Click();*/
             var a = page.FindFirstDescendant(cf => cf.ByAutomationId("CaseListView"));
-            var b = a.FindAllChildren().First();
-            //var e = b.FindAllChildren().OfType<MenuItem>();
-            ConditionFactory cf1 = new ConditionFactory(new UIA3PropertyLibrary());
-            var e = b.FindFirstDescendant(cf1.Menu()).AsMenu();
-            var f = e.FindAllChildren().First();
-            f.Click();
-            var end = 0;
-            /*foreach (var item in page.FindAllChildren())
+            int i = 0;
+            var listview = page.FindAllChildren().First();
+            foreach (var item in page.FindAllChildren())
             {
-                Console.WriteLine(item.AutomationId);
-            }*/
+                i++;
+                if (i == 4)
+                {
+                    listview = item;
+                }
+            }
+            var menu = listview.FindAllDescendants(new ConditionFactory(new UIA3PropertyLibrary()).ByText("Выдать"));
+            var listviewchildrens = listview.FindAllChildren();
+            var listviewchildren = listviewchildrens[0];
+            var textboxesinitem = listviewchildren.FindAllChildren();  
+            var textboxinitem = textboxesinitem[0];
+            textboxinitem.RightClick();
+            Mouse.MoveBy(100, 45);
+            Mouse.LeftClick();
+            var descBox = page.FindAllChildren()[4].AsTextBox();
+            descBox.Text = "123";
+            var savebutton = page.FindAllChildren()[5].AsButton();
+            savebutton.Click();
+            savebutton = page.FindFirstDescendant(cf => cf.ByAutomationId("SaveButton")).AsButton();
+            savebutton.Click();
+            
+            var end = 0;
+            app.Close();
+        }
+        //[TestMethod]
+        public void Out()
+        {
+            var app = FlaUI.Core.Application.Launch("C:\\Users\\Dmitrii\\Desktop\\Проекты\\Archivarius\\Archivarius\\Archivarius\\bin\\Debug\\Archivarius.exe");
+            var automation = new UIA3Automation();
+            var window = app.GetMainWindow(automation);
+            var page = window.FindFirstDescendant(cf => cf.ByAutomationId("MainFrame"))?.AsGrid();
+            var loginbox = page.FindFirstDescendant(cf => cf.ByAutomationId("LoginBox"))?.AsTextBox();
+            loginbox.Text = "Ivanov";
+            var passwordBox = page.FindFirstDescendant(cf => cf.ByAutomationId("PasswordBox"))?.AsTextBox();
+            passwordBox.Text = "123";
+            var button = page.FindFirstDescendant(cf => cf.ByAutomationId("AuthButton")).AsButton();
+            button.Click();
+            var a = page.FindFirstDescendant(cf => cf.ByAutomationId("CaseListView"));
+            int i = 0;
+            var listview = page.FindAllChildren().First();
+            foreach (var item in page.FindAllChildren())
+            {
+                i++;
+                if (i == 4)
+                {
+                    listview = item;
+                }
+            }
+            var menu = listview.FindAllDescendants(new ConditionFactory(new UIA3PropertyLibrary()).ByText("Выдать"));
+            var listviewchildrens = listview.FindAllChildren();
+            var listviewchildren = listviewchildrens[0];
+            var textboxesinitem = listviewchildren.FindAllChildren();
+            var textboxinitem = textboxesinitem[0];
+            textboxinitem.RightClick();
+            Mouse.MoveBy(100, 100);
+            Mouse.LeftClick();
+            Thread.Sleep(1000);
+
+            var end = 0;
+            app.Close();
         }
     }
 }
