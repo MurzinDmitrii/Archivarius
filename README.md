@@ -51,8 +51,8 @@
 
 ### Создан с
 
-* [![C#]<img src="Images/sharplogo.png" alt="AllCasePage" width="400" height="300">][sharp-url]
-* [![MS SQL Server]<img src="Images/mssqllogo.png" alt="AllCasePage" width="400" height="300">][mssql-url]
+<img src="Images/sharplogo.png" alt="AllCasePage" width="50" height="50" href="https://learn.microsoft.com/ru-ru/dotnet/csharp/">
+<img src="Images/mssqllogo.png" alt="AllCasePage" width="50" height="50" href="https://www.microsoft.com/ru-ru/sql-server/">
 
 <p align="right">(<a href="#readme-top">Наверх</a>)</p>
 
@@ -70,15 +70,15 @@
 
 Приложение позволяет отслеживать хранимые в архиве дела
 
-<img src="Images/allcasepagephoto.png" alt="AllCasePage" width="400" height="300">
+<img src="Images/allcasepagephoto.png" alt="AllCasePage" width="800" height="450">
 
 При необходимости дела добавляются/редактируются
 
-<img src="Images/addcasepagephoto.png" alt="AddCasePage" width="400" height="300">
+<img src="Images/addcasepagephoto.png" alt="AddCasePage" width="800" height="450">
 
 В системе ведется учет заявок на дела из архива
 
-<img src="Images/allquerypagephoto.png" alt="AllQueryPage" width="400" height="300">
+<img src="Images/allquerypagephoto.png" alt="AllQueryPage" width="800" height="450">
 
 
 
