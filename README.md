@@ -118,7 +118,7 @@
 
 Почта для связи - dmitriymyrzin0908@gmail.com
 
-Ссылка на проект: [https://github.com/github_username/repo_name](https://github.com/MurzinDmitrii/Archivarius)
+Ссылка на проект: [https://github.com/MurzinDmitrii/Archivarius](https://github.com/MurzinDmitrii/Archivarius)
 
 <p align="right">(<a href="#readme-top">Наверх</a>)</p>
 
