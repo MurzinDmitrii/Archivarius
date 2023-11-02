@@ -18,12 +18,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -57,8 +51,8 @@
 
 ### Создан с
 
-* [![C#][sharplogo]][sharp-url]
-* [![MS SQL Server][mssql-url]][mssql-url]
+* [![C#]<img src="Images/sharplogo.png" alt="AllCasePage" width="400" height="300">][sharp-url]
+* [![MS SQL Server]<img src="Images/mssqllogo.png" alt="AllCasePage" width="400" height="300">][mssql-url]
 
 <p align="right">(<a href="#readme-top">Наверх</a>)</p>
 
@@ -76,15 +70,15 @@
 
 Приложение позволяет отслеживать хранимые в архиве дела
 
-* [![AllCasePage][allcasepagephoto]][]
+<img src="Images/allcasepagephoto.png" alt="AllCasePage" width="400" height="300">
 
 При необходимости дела добавляются/редактируются
 
-* [![AddCasePage][allcasepagephoto]][]
+<img src="Images/addcasepagephoto.png" alt="AddCasePage" width="400" height="300">
 
 В системе ведется учет заявок на дела из архива
 
-* [![AllQueryPage][allquerypagephoto]][]
+<img src="Images/allquerypagephoto.png" alt="AllQueryPage" width="400" height="300">
 
 
 
