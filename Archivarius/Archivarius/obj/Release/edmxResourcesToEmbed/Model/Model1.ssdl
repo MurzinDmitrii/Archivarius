@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ArhivariusModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Act">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="CaseDate" Type="datetime" Nullable="false" />
+    <Property Name="TypeID" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Applicant">
+    <Key>
+      <PropertyRef Name="StringNumber" />
+    </Key>
+    <Property Name="StringNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParticipantID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleCase">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="CaseNumber" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ArticleNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Case">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+      <PropertyRef Name="Number" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="WorkerID" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EnterData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Participants">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Query">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Complited" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Responder">
+    <Key>
+      <PropertyRef Name="StringNumber" />
+    </Key>
+    <Property Name="StringNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParticipantID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="Patronimyc" Type="nvarchar" MaxLength="60" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Act__4AB81AF0">
+    <End Role="Case" Type="Self.Case" Multiplicity="1" />
+    <End Role="Act" Type="Self.Act" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Case">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Principal>
+      <Dependent Role="Act">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="CaseDate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Act__TypeID__4CA06362">
+    <End Role="Type" Type="Self.Type" Multiplicity="1" />
+    <End Role="Act" Type="Self.Act" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Act">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicant__693CA210">
+    <End Role="Case" Type="Self.Case" Multiplicity="1" />
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Case">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Principal>
+      <Dependent Role="Applicant">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicant__Parti__6754599E">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+    <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Applicant">
+        <PropertyRef Name="ParticipantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArticleCa__Artic__48CFD27E">
+    <End Role="Article" Type="Self.Article" Multiplicity="1" />
+    <End Role="ArticleCase" Type="Self.ArticleCase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="Number" />
+      </Principal>
+      <Dependent Role="ArticleCase">
+        <PropertyRef Name="ArticleNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArticleCase__49C3F6B7">
+    <End Role="Case" Type="Self.Case" Multiplicity="1" />
+    <End Role="ArticleCase" Type="Self.ArticleCase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Case">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Principal>
+      <Dependent Role="ArticleCase">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="CaseNumber" />
+        <PropertyRef Name="Date" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Case__CategoryID__47DBAE45">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Case" Type="Self.Case" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Case">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Case__WorkerID__46E78A0C">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+    <End Role="Case" Type="Self.Case" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Case">
+        <PropertyRef Name="WorkerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EnterData__ID__5FB337D6">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+    <End Role="EnterData" Type="Self.EnterData" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EnterData">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Query__6EF57B66">
+    <End Role="Case" Type="Self.Case" Multiplicity="1" />
+    <End Role="Query" Type="Self.Query" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Case">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Principal>
+      <Dependent Role="Query">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Responder__6A30C649">
+    <End Role="Case" Type="Self.Case" Multiplicity="1" />
+    <End Role="Responder" Type="Self.Responder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Case">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Principal>
+      <Dependent Role="Responder">
+        <PropertyRef Name="CategoryID" />
+        <PropertyRef Name="Number" />
+        <PropertyRef Name="Date" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Responder__Parti__68487DD7">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+    <End Role="Responder" Type="Self.Responder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Responder">
+        <PropertyRef Name="ParticipantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Worker__PostID__4BAC3F29">
+    <End Role="Post" Type="Self.Post" Multiplicity="1" />
+    <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddAct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="int" Mode="In" />
+    <Parameter Name="CaseDate" Type="datetime" Mode="In" />
+    <Parameter Name="TypeID" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="AddApplicant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ParticipantsID" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="int" Mode="In" />
+    <Parameter Name="CaseDate" Type="datetime" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddResponder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ParticipantsID" Type="int" Mode="In" />
+    <Parameter Name="Number" Type="int" Mode="In" />
+    <Parameter Name="CaseDate" Type="datetime" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="Хранилище ArhivariusModelContainer">
+    <EntitySet Name="Act" EntityType="Self.Act" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArticleCase" EntityType="Self.ArticleCase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnterData" EntityType="Self.EnterData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participants" EntityType="Self.Participants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Query" EntityType="Self.Query" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Responder" EntityType="Self.Responder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Act__4AB81AF0" Association="Self.FK__Act__4AB81AF0">
+      <End Role="Case" EntitySet="Case" />
+      <End Role="Act" EntitySet="Act" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Act__TypeID__4CA06362" Association="Self.FK__Act__TypeID__4CA06362">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Act" EntitySet="Act" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicant__693CA210" Association="Self.FK__Applicant__693CA210">
+      <End Role="Case" EntitySet="Case" />
+      <End Role="Applicant" EntitySet="Applicant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicant__Parti__6754599E" Association="Self.FK__Applicant__Parti__6754599E">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Applicant" EntitySet="Applicant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArticleCa__Artic__48CFD27E" Association="Self.FK__ArticleCa__Artic__48CFD27E">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="ArticleCase" EntitySet="ArticleCase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArticleCase__49C3F6B7" Association="Self.FK__ArticleCase__49C3F6B7">
+      <End Role="Case" EntitySet="Case" />
+      <End Role="ArticleCase" EntitySet="ArticleCase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Case__CategoryID__47DBAE45" Association="Self.FK__Case__CategoryID__47DBAE45">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Case" EntitySet="Case" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Case__WorkerID__46E78A0C" Association="Self.FK__Case__WorkerID__46E78A0C">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Case" EntitySet="Case" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EnterData__ID__5FB337D6" Association="Self.FK__EnterData__ID__5FB337D6">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="EnterData" EntitySet="EnterData" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Query__6EF57B66" Association="Self.FK__Query__6EF57B66">
+      <End Role="Case" EntitySet="Case" />
+      <End Role="Query" EntitySet="Query" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Responder__6A30C649" Association="Self.FK__Responder__6A30C649">
+      <End Role="Case" EntitySet="Case" />
+      <End Role="Responder" EntitySet="Responder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Responder__Parti__68487DD7" Association="Self.FK__Responder__Parti__68487DD7">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Responder" EntitySet="Responder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Worker__PostID__4BAC3F29" Association="Self.FK__Worker__PostID__4BAC3F29">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
