@@ -116,7 +116,7 @@
 <!-- CONTACT -->
 ## Контакты
 
-Почта для связи - [@twitter_handle](https://twitter.com/twitter_handle) - dmitriymyrzin0908@gmail.com
+Почта для связи - dmitriymyrzin0908@gmail.com
 
 Ссылка на проект: [https://github.com/github_username/repo_name](https://github.com/MurzinDmitrii/Archivarius)
 
