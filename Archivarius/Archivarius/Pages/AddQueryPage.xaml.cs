@@ -35,9 +35,17 @@ namespace Archivarius.Pages
             query.Description = DescBox.Text == "" ? "-" : DescBox.Text;
             query.Case = CaseComboBox.SelectedItem as Case;
             query.Complited = false;
-            DB.entities.Query.Add(query);
-            DB.entities.SaveChanges();
-            NavigationService.GoBack();
+            try
+            {
+                DB.entities.Query.Add(query);
+                DB.entities.SaveChanges();
+                NavigationService.GoBack();
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                MessageBox.Show("Потеряно соединение с сервером!",
+                    "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

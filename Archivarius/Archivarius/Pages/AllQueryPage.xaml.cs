@@ -32,24 +32,32 @@ namespace Archivarius.Pages
 
         private void Load()
         {
-            var QueryList = DB.entities.Query.ToList();
-            if (!string.IsNullOrEmpty(SearchDate.SelectedDate.ToString()))
+            try
             {
-                DateTime time = SearchDate.SelectedDate ?? DateTime.Now;
-                QueryList = QueryList.Where
-                    (c => c.Date.ToShortDateString() == time.ToShortDateString()).ToList();
+                var QueryList = DB.entities.Query.ToList();
+                if (!string.IsNullOrEmpty(SearchDate.SelectedDate.ToString()))
+                {
+                    DateTime time = SearchDate.SelectedDate ?? DateTime.Now;
+                    QueryList = QueryList.Where
+                        (c => c.Date.ToShortDateString() == time.ToShortDateString()).ToList();
+                }
+                if (!string.IsNullOrEmpty(SearchBox.Text))
+                {
+                    QueryList = QueryList.Where
+                        (c => c.Case.CaseFullNumber.Contains(SearchBox.Text)).ToList();
+                }
+                if (QueryList.Count == 0)
+                {
+                    MessageBox.Show("По результатам поиска не найдено подходящих вариантов",
+                        "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                QueryListView.ItemsSource = QueryList;
             }
-            if (!string.IsNullOrEmpty(SearchBox.Text))
+            catch (System.Data.Entity.Core.EntityException)
             {
-                QueryList = QueryList.Where
-                    (c => c.Case.CaseFullNumber.Contains(SearchBox.Text)).ToList();
-            }
-            if (QueryList.Count == 0)
-            {
-                MessageBox.Show("По результатам поиска не найдено подходящих вариантов",
+                MessageBox.Show("Потеряно соединение с сервером!",
                     "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            QueryListView.ItemsSource = QueryList;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

@@ -59,6 +59,11 @@ namespace Archivarius.Pages
                 DB.entities = new ArhivariusEntities1();
                 NavigationService.GoBack();
             }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                MessageBox.Show("Потеряно соединение с сервером!",
+                    "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             catch
             {
                 MessageBox.Show

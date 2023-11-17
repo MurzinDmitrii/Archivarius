@@ -79,6 +79,11 @@ namespace Archivarius.Pages
                     DB.entities.AddAct(newcase.CategoryID, newcase.Number, newcase.Date, 1, DateTime.Now);
                 NavigationService.Navigate(new AddCase2PartPage(newcase));
             }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                MessageBox.Show("Потеряно соединение с сервером!",
+                    "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             catch
             {
                 MessageBox.Show

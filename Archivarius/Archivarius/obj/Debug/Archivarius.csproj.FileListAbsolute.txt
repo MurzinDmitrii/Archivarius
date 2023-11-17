@@ -118,3 +118,5 @@ C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\obj\
 C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\obj\Debug\Pages\AddCase2PartPage.baml
 C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\bin\Debug\SignatureLibrary.dll
 C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\bin\Debug\SignatureLibrary.pdb
+C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\bin\Debug\Cryptography.dll
+C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\Archivarius\bin\Debug\Cryptography.pdb

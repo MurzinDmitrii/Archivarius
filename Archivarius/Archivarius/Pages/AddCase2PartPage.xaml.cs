@@ -50,10 +50,18 @@ namespace Archivarius.Pages
         }
         private void Load()
         {
-            var ApplicantList = DB.entities.Applicant.Where(c => c.Case.Number == newcase.Number).ToList();
-            ApplicantListView.ItemsSource = ApplicantList;
-            var RespondersList = DB.entities.Responder.Where(c => c.Case.Number == newcase.Number).ToList();
-            ResponderListView.ItemsSource = RespondersList;
+            try
+            {
+                var ApplicantList = DB.entities.Applicant.Where(c => c.Case.Number == newcase.Number).ToList();
+                ApplicantListView.ItemsSource = ApplicantList;
+                var RespondersList = DB.entities.Responder.Where(c => c.Case.Number == newcase.Number).ToList();
+                ResponderListView.ItemsSource = RespondersList;
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                MessageBox.Show("Потеряно соединение с сервером!",
+                    "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

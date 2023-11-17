@@ -41,22 +41,29 @@ namespace Archivarius.Pages
 
         private void Load()
         {
-            
-            var ActList = innercase.Act.OrderByDescending(c => c.Date).ToList();
-            if(TypeComboBox.SelectedIndex != 0)
+            try
             {
-                ActList = ActList.Where(c => c.Type ==  TypeComboBox.SelectedItem).ToList();
+                var ActList = innercase.Act.OrderByDescending(c => c.Date).ToList();
+                if (TypeComboBox.SelectedIndex != 0)
+                {
+                    ActList = ActList.Where(c => c.Type == TypeComboBox.SelectedItem).ToList();
+                }
+                if (!string.IsNullOrEmpty(SearchDate.SelectedDate.ToString()))
+                {
+                    DateTime time = SearchDate.SelectedDate ?? DateTime.Now;
+                    ActList = ActList.Where
+                        (c => c.Date.ToShortDateString() == time.ToShortDateString()).ToList();
+                }
+                ActListView.ItemsSource = ActList;
+                if (ActList.Count == 0)
+                {
+                    MessageBox.Show("По результатам поиска не найдено подходящих вариантов",
+                        "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
-            if (!string.IsNullOrEmpty(SearchDate.SelectedDate.ToString()))
+            catch (System.Data.Entity.Core.EntityException)
             {
-                DateTime time = SearchDate.SelectedDate??DateTime.Now;
-                ActList = ActList.Where
-                    (c => c.Date.ToShortDateString() == time.ToShortDateString()).ToList();
-            }
-            ActListView.ItemsSource = ActList;
-            if (ActList.Count == 0)
-            {
-                MessageBox.Show("По результатам поиска не найдено подходящих вариантов",
+                MessageBox.Show("Потеряно соединение с сервером!",
                     "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }

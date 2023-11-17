@@ -95,40 +95,49 @@ namespace Archivarius.Pages
         }
         private void Load()
         {
-            DB.entities = new ArhivariusEntities1();
-            var CaseList = DB.entities.Case.ToList();
-            if (SearchComboBox.SelectedIndex != 0)
+            List<Case> CaseList;
+            try
             {
-                CaseList = CaseList.Where(c => c.Worker == SearchComboBox.SelectedItem).ToList();
-            }
-            if (!string.IsNullOrEmpty(SearchDatePicker.SelectedDate.ToString()))
-            {
-                DateTime time = SearchDatePicker.SelectedDate ?? DateTime.Now;
-                CaseList = CaseList.Where
-                    (c => c.Date.ToShortDateString() == time.ToShortDateString()).ToList();
-            }
-            if (!string.IsNullOrEmpty(SearchBox.Text))
-            {
-                CaseList = CaseList.Where
-                    (c => c.CaseFullNumber.Contains(SearchBox.Text)).ToList();
-            }
-            foreach (var item in CaseList)
-            {
-                if (item.Act.Count() % 2 == 1)
+                DB.entities = new ArhivariusEntities1();
+                CaseList = DB.entities.Case.ToList();
+                if (SearchComboBox.SelectedIndex != 0)
                 {
-                    item.ButtonType = "Выдать";
-                    item.BackColor = "White";
+                    CaseList = CaseList.Where(c => c.Worker == SearchComboBox.SelectedItem).ToList();
                 }
-                else
+                if (!string.IsNullOrEmpty(SearchDatePicker.SelectedDate.ToString()))
                 {
-                    item.ButtonType = "Принять";
-                    item.BackColor = "#DDDDDD";
+                    DateTime time = SearchDatePicker.SelectedDate ?? DateTime.Now;
+                    CaseList = CaseList.Where
+                        (c => c.Date.ToShortDateString() == time.ToShortDateString()).ToList();
+                }
+                if (!string.IsNullOrEmpty(SearchBox.Text))
+                {
+                    CaseList = CaseList.Where
+                        (c => c.CaseFullNumber.Contains(SearchBox.Text)).ToList();
+                }
+                foreach (var item in CaseList)
+                {
+                    if (item.Act.Count() % 2 == 1)
+                    {
+                        item.ButtonType = "Выдать";
+                        item.BackColor = "White";
+                    }
+                    else
+                    {
+                        item.ButtonType = "Принять";
+                        item.BackColor = "#DDDDDD";
+                    }
+                }
+                CaseListView.ItemsSource = CaseList;
+                if (CaseList.Count == 0)
+                {
+                    MessageBox.Show("По результатам поиска не найдено подходящих вариантов",
+                        "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-            CaseListView.ItemsSource = CaseList;
-            if (CaseList.Count == 0)
+            catch (System.Data.Entity.Core.EntityException)
             {
-                MessageBox.Show("По результатам поиска не найдено подходящих вариантов",
+                MessageBox.Show("Потеряно соединение с сервером!",
                     "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }

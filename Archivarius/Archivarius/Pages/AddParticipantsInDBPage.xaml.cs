@@ -36,6 +36,11 @@ namespace Archivarius.Pages
                 DB.entities.SaveChanges();
                 NavigationService.GoBack();
             }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                MessageBox.Show("Потеряно соединение с сервером!",
+                    "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             catch
             {
                 MessageBox.Show("Проверьте чтобы фамилия и имя были заполнены!", "Ошибка!",
