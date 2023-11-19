@@ -34,6 +34,8 @@ namespace Archivarius.Pages
             ArticleComboBox.ItemsSource = DB.entities.Article.ToList();
             this.DataContext = newcase;
             newCase = true;
+            CategoryComboBox.Visibility = Visibility.Visible;
+            DateBox.Visibility = Visibility.Visible;
         }
         public AddCasePage(Case newcase)
         {
@@ -50,6 +52,8 @@ namespace Archivarius.Pages
                 ArticleComboBox.SelectedItem = article.Article;
             }
             newCase = false;
+            CategoryComboBox.Visibility = Visibility.Collapsed;
+            DateBox.Visibility = Visibility.Collapsed;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

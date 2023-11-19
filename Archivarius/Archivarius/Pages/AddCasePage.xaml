@@ -44,6 +44,7 @@
                             Margin="20,20,20,0">
                         </ComboBox>
                         <DatePicker 
+                            x:Name="DateBox"
                             Width="150"
                             Margin="20,20,20,0"
                             SelectedDate="{Binding Date}"

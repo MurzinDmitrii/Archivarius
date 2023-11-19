@@ -13,12 +13,13 @@
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical" Background="#E8F1F5" Margin="5">
                     <TextBlock Text="Истцы"/>
-                    <ListView x:Name="ApplicantListView" Width="300" Height="300">
+                    <ListView x:Name="ApplicantListView" 
+                              Width="300" Height="250">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel>
+                                <StackPanel >
                                     <TextBlock Text="{Binding Participants.ParticipantsFull}"/>
                                 </StackPanel>
                             </DataTemplate>
@@ -30,12 +31,12 @@
                         </ListView.ContextMenu>
                     </ListView>
                 </StackPanel>
-                <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical" Background="#E8F1F5" Margin="5">
                     <TextBlock Text="Ответчики"/>
-                    <ListView x:Name="ResponderListView" Width="300" Height="300" >
+                    <ListView x:Name="ResponderListView" Width="300" Height="250">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel>
+                                <StackPanel >
                                     <TextBlock Text="{Binding Participants.ParticipantsFull}"/>
                                 </StackPanel>
                             </DataTemplate>
