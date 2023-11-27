@@ -20,6 +20,8 @@ namespace Archivarius.Model
             this.Act = new HashSet<Act>();
             this.ArticleCase = new HashSet<ArticleCase>();
             this.Query = new HashSet<Query>();
+            this.Applicant = new HashSet<Applicant>();
+            this.Responder = new HashSet<Responder>();
         }
     
         public int CategoryID { get; set; }
@@ -36,5 +38,9 @@ namespace Archivarius.Model
         public virtual Worker Worker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Query> Query { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Applicant> Applicant { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Responder> Responder { get; set; }
     }
 }

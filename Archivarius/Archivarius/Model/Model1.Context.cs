@@ -12,6 +12,8 @@ namespace Archivarius.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ArhivariusEntities1 : DbContext
     {
@@ -35,5 +37,75 @@ namespace Archivarius.Model
         public virtual DbSet<Type> Type { get; set; }
         public virtual DbSet<Worker> Worker { get; set; }
         public virtual DbSet<EnterData> EnterData { get; set; }
+        public virtual DbSet<Applicant> Applicant { get; set; }
+        public virtual DbSet<Participants> Participants { get; set; }
+        public virtual DbSet<Responder> Responder { get; set; }
+    
+        public virtual int AddAct(Nullable<int> categoryID, Nullable<int> number, Nullable<System.DateTime> caseDate, Nullable<int> typeID, Nullable<System.DateTime> date)
+        {
+            var categoryIDParameter = categoryID.HasValue ?
+                new ObjectParameter("CategoryID", categoryID) :
+                new ObjectParameter("CategoryID", typeof(int));
+    
+            var numberParameter = number.HasValue ?
+                new ObjectParameter("Number", number) :
+                new ObjectParameter("Number", typeof(int));
+    
+            var caseDateParameter = caseDate.HasValue ?
+                new ObjectParameter("CaseDate", caseDate) :
+                new ObjectParameter("CaseDate", typeof(System.DateTime));
+    
+            var typeIDParameter = typeID.HasValue ?
+                new ObjectParameter("TypeID", typeID) :
+                new ObjectParameter("TypeID", typeof(int));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddAct", categoryIDParameter, numberParameter, caseDateParameter, typeIDParameter, dateParameter);
+        }
+    
+        public virtual int AddApplicant(Nullable<int> participantsID, Nullable<int> number, Nullable<System.DateTime> caseDate, Nullable<int> categoryID)
+        {
+            var participantsIDParameter = participantsID.HasValue ?
+                new ObjectParameter("ParticipantsID", participantsID) :
+                new ObjectParameter("ParticipantsID", typeof(int));
+    
+            var numberParameter = number.HasValue ?
+                new ObjectParameter("Number", number) :
+                new ObjectParameter("Number", typeof(int));
+    
+            var caseDateParameter = caseDate.HasValue ?
+                new ObjectParameter("CaseDate", caseDate) :
+                new ObjectParameter("CaseDate", typeof(System.DateTime));
+    
+            var categoryIDParameter = categoryID.HasValue ?
+                new ObjectParameter("CategoryID", categoryID) :
+                new ObjectParameter("CategoryID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddApplicant", participantsIDParameter, numberParameter, caseDateParameter, categoryIDParameter);
+        }
+    
+        public virtual int AddResponder(Nullable<int> participantsID, Nullable<int> number, Nullable<System.DateTime> caseDate, Nullable<int> categoryID)
+        {
+            var participantsIDParameter = participantsID.HasValue ?
+                new ObjectParameter("ParticipantsID", participantsID) :
+                new ObjectParameter("ParticipantsID", typeof(int));
+    
+            var numberParameter = number.HasValue ?
+                new ObjectParameter("Number", number) :
+                new ObjectParameter("Number", typeof(int));
+    
+            var caseDateParameter = caseDate.HasValue ?
+                new ObjectParameter("CaseDate", caseDate) :
+                new ObjectParameter("CaseDate", typeof(System.DateTime));
+    
+            var categoryIDParameter = categoryID.HasValue ?
+                new ObjectParameter("CategoryID", categoryID) :
+                new ObjectParameter("CategoryID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddResponder", participantsIDParameter, numberParameter, caseDateParameter, categoryIDParameter);
+        }
     }
 }

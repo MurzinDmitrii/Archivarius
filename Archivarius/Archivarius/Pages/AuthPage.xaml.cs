@@ -28,26 +28,35 @@ namespace Archivarius.Pages
 
         private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
-            Worker worker = DB.entities.Worker.FirstOrDefault(c => c.Login == LoginBox.Text);
-            if (worker != null)
+            try
             {
-                if (Cryptography.Cryptography.VerifyHashedPassword
-                   (worker.EnterData.Password.ToString(), PasswordBox.Password))
+                Worker worker = DB.entities.Worker.FirstOrDefault(c => c.Login == LoginBox.Text);
+                if (worker != null)
                 {
-                    Properties.Settings.Default.AfterAuthPanelVisible = "Visible";
-                    NavigationService.Navigate(new AllActPage(worker));
+                    if (Cryptography.Cryptography.VerifyHashedPassword
+                       (worker.EnterData.Password.ToString(), PasswordBox.Password))
+                    {
+                        Properties.Settings.Default.AfterAuthPanelVisible = "Visible";
+                        Properties.Settings.Default.WorkerID = worker.ID;
+                        NavigationService.Navigate(new AllCasePage(worker));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вам отказано в доступе! Неверный пароль!", "Ошибка!",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("Вам отказано в доступе! Неверный пароль!", "Ошибка!",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Вам отказано в доступе! Неверный логин!", "Ошибка!",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-
             }
-            else
+            catch (System.Data.Entity.Core.EntityException)
             {
-                MessageBox.Show("Вам отказано в доступе! Неверный логин!","Ошибка!",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Потеряно соединение с сервером!",
+                    "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

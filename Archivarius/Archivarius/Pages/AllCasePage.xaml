@@ -1,0 +1,65 @@
+﻿<Page x:Class="Archivarius.Pages.AllCasePage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Archivarius.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AllCasePage">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBox
+                    x:Name="SearchBox"
+                    Width="150"
+                    Margin="5"
+                    MaxLength="50"
+                    TextChanged="SearchBox_TextChanged"
+                    materialDesign:HintAssist.Hint="Поиск по номеру"/>
+                <DatePicker
+                    x:Name="SearchDatePicker"
+                    Width="150"
+                    SelectedDateChanged="SearchDatePicker_SelectedDateChanged"
+                    Margin="5,0,5,0"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    materialDesign:HintAssist.Hint="Поиск по дате"/>
+                <ComboBox
+                    SelectionChanged="SearchDatePicker_SelectedDateChanged"
+                    x:Name="SearchComboBox"
+                    DisplayMemberPath="WorkerFullName"
+                    materialDesign:HintAssist.Hint="Поиск по судье"
+                    Margin="5,0,5,0"
+                    materialDesign:HintAssist.HintOpacity=".26"
+                    Width="150"
+                    IsEditable="True"/>
+            </StackPanel>
+            <StackPanel Background="#E8F1F5">
+                <ListView x:Name="CaseListView" Width="570" Height="300" 
+                      ScrollViewer.CanContentScroll="False" Margin="5" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5" Width="525" Background="{Binding BackColor}" x:Name="CaseItem">
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu x:Name="CaseMenu">
+                                        <MenuItem x:Name="EditMenu"
+                                                  Header="Редактировать информацию" Click="MenuItem_Click_2"/>
+                                        <MenuItem x:Name="EditActMenu"
+                                                  Header="{Binding ButtonType}" Click="MenuItem_Click_1"/>
+                                        <MenuItem x:Name="AllActMenu" 
+                                                  Click="MenuItem_Click" Header="Просмотреть все акты"/>
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                                <TextBlock Text="{Binding CaseFullNumber}" Margin="5"/>
+                                <TextBlock Text="{Binding Description}" Margin="5"/>
+                                <TextBlock Text="{Binding JudgeFullInfo}" Margin="5"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

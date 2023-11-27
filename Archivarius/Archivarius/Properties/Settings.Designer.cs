@@ -46,5 +46,53 @@ namespace Archivarius.Properties {
                 this["FullName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WorkerID {
+            get {
+                return ((int)(this["WorkerID"]));
+            }
+            set {
+                this["WorkerID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AddButtonColor {
+            get {
+                return ((string)(this["AddButtonColor"]));
+            }
+            set {
+                this["AddButtonColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AllButtonColor {
+            get {
+                return ((string)(this["AllButtonColor"]));
+            }
+            set {
+                this["AllButtonColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string QueryButtonColor {
+            get {
+                return ((string)(this["QueryButtonColor"]));
+            }
+            set {
+                this["QueryButtonColor"] = value;
+            }
+        }
     }
 }

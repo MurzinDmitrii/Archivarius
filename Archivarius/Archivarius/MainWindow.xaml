@@ -18,11 +18,12 @@
                             Visibility="{Binding AfterAuthPanelVisible}">
                     <TextBlock x:Name="HelloBox" Text="{Binding FullName}" Margin="10,5,5,100"/>
                     <Button
-                        x:Name="AllActButton"
+                        x:Name="AllCaseButton"
+                        Click="AllCaseButton_Click"
                         Margin="5"
                         Height="{StaticResource ButtonHeight}"
-                        materialDesign:ButtonAssist.CornerRadius="25"
-                        Background="#005691"
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        Background="{Binding AllButtonColor}"
                         Width="100"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
@@ -33,20 +34,22 @@
                         x:Name="AddButton"
                         Margin="5"
                         Height="{StaticResource ButtonHeight}"
-                        materialDesign:ButtonAssist.CornerRadius="25"
-                        Background="#005691"
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        Background="{Binding AddButtonColor}"
                         Width="100"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Click="AddButton_Click"
                         ToolTip="Внести дело в архив">
                         <TextBlock Text="Добавить" />
                     </Button>
                     <Button
                         x:Name="QueryButton"
+                        Click="QueryButton_Click"
                         Margin="5"
                         Height="{StaticResource ButtonHeight}"
-                        materialDesign:ButtonAssist.CornerRadius="25"
-                        Background="#005691"
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        Background="{Binding QueryButtonColor}"
                         Width="100"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
