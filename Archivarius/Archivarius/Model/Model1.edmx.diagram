@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c53d2091f3734f429c22a433e0210007" Name="Diagram1" ZoomLevel="47">
+      <Diagram DiagramId="c53d2091f3734f429c22a433e0210007" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="ArhivariusModel.Act" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ArhivariusModel.Article" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ArhivariusModel.ArticleCase" Width="1.5" PointX="10.5" PointY="4.375" IsExpanded="true" />

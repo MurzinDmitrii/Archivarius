@@ -30,7 +30,16 @@ namespace Archivarius.Pages
         
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            var applicantList = DB.entities.Applicant.Where(c => c.Case.Number == newcase.Number 
+            && c.Case.Date == newcase.Date && c.Case.CategoryID == newcase.CategoryID).ToList();
+            if (applicantList.Count == 0)
+            {
+                MessageBox.Show("Пожалуйста, добавьте участников дела", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
             MessageBox.Show("Успешно!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+            Properties.Settings.Default.AllButtonColor = "#148ad9";
+            Properties.Settings.Default.AddButtonColor = "#005691";
             NavigationService.Navigate(new AllCasePage());
         }
         //Добавить истцов
