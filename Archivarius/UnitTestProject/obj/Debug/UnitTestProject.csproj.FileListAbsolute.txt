@@ -47,3 +47,4 @@ C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\UnitTestProject\
 C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\UnitTestProject\bin\Debug\itextsharp.xml
 C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\UnitTestProject\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\UnitTestProject\bin\Debug\SignatureLibrary.pdb
+C:\Users\Dmitrii\Desktop\Проекты\Archivarius\Archivarius\UnitTestProject\bin\Debug\Cryptography.pdb
